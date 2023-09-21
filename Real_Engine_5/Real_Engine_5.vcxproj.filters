@@ -40,6 +40,9 @@
     <Filter Include="ImGui">
       <UniqueIdentifier>{d08f43c6-1039-49eb-bc9d-102c3a8e1ecb}</UniqueIdentifier>
     </Filter>
+    <Filter Include="ImGui\backends">
+      <UniqueIdentifier>{bf574de8-3c37-4eba-84a0-be141eedc22d}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Module.h">
@@ -276,6 +279,15 @@
     <ClInclude Include="imgui-docking\imstb_truetype.h">
       <Filter>ImGui</Filter>
     </ClInclude>
+    <ClInclude Include="imgui-docking\backends\imgui_impl_opengl3.h">
+      <Filter>ImGui\backends</Filter>
+    </ClInclude>
+    <ClInclude Include="imgui-docking\backends\imgui_impl_opengl3_loader.h">
+      <Filter>ImGui\backends</Filter>
+    </ClInclude>
+    <ClInclude Include="imgui-docking\backends\imgui_impl_sdl2.h">
+      <Filter>ImGui\backends</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="ModuleCamera3D.cpp">
@@ -424,6 +436,12 @@
     </ClCompile>
     <ClCompile Include="imgui-docking\imgui_widgets.cpp">
       <Filter>ImGui</Filter>
+    </ClCompile>
+    <ClCompile Include="imgui-docking\backends\imgui_impl_opengl3.cpp">
+      <Filter>ImGui\backends</Filter>
+    </ClCompile>
+    <ClCompile Include="imgui-docking\backends\imgui_impl_sdl2.cpp">
+      <Filter>ImGui\backends</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
