@@ -288,6 +288,15 @@
     <ClInclude Include="imgui-docking\backends\imgui_impl_sdl.h">
       <Filter>ImGui\backends</Filter>
     </ClInclude>
+    <ClInclude Include="imgui-docking\backends\imgui_impl_sdl2.h">
+      <Filter>ImGui\backends</Filter>
+    </ClInclude>
+    <ClInclude Include="imgui-docking\backends\imgui_impl_sdlrenderer2.h">
+      <Filter>ImGui\backends</Filter>
+    </ClInclude>
+    <ClInclude Include="ModuleEditor.h">
+      <Filter>Sources\Modules</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="ModuleCamera3D.cpp">
@@ -442,6 +451,15 @@
     </ClCompile>
     <ClCompile Include="imgui-docking\backends\imgui_impl_sdl.cpp">
       <Filter>ImGui\backends</Filter>
+    </ClCompile>
+    <ClCompile Include="imgui-docking\backends\imgui_impl_sdl2.cpp">
+      <Filter>ImGui\backends</Filter>
+    </ClCompile>
+    <ClCompile Include="imgui-docking\backends\imgui_impl_sdlrenderer2.cpp">
+      <Filter>ImGui\backends</Filter>
+    </ClCompile>
+    <ClCompile Include="ModuleEditor.cpp">
+      <Filter>Sources\Modules</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
