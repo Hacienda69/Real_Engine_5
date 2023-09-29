@@ -43,6 +43,9 @@
     <Filter Include="ImGui\backends">
       <UniqueIdentifier>{bf574de8-3c37-4eba-84a0-be141eedc22d}</UniqueIdentifier>
     </Filter>
+    <Filter Include="SDL_Headers">
+      <UniqueIdentifier>{b8804d41-0429-4f4f-b34d-65a499c6e1c9}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Module.h">
@@ -296,6 +299,243 @@
     </ClInclude>
     <ClInclude Include="ModuleEditor.h">
       <Filter>Sources\Modules</Filter>
+    </ClInclude>
+    <ClInclude Include="imgui-docking\SDL\include\begin_code.h">
+      <Filter>SDL_Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="imgui-docking\SDL\include\close_code.h">
+      <Filter>SDL_Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="imgui-docking\SDL\include\SDL.h">
+      <Filter>SDL_Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="imgui-docking\SDL\include\SDL_assert.h">
+      <Filter>SDL_Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="imgui-docking\SDL\include\SDL_atomic.h">
+      <Filter>SDL_Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="imgui-docking\SDL\include\SDL_audio.h">
+      <Filter>SDL_Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="imgui-docking\SDL\include\SDL_bits.h">
+      <Filter>SDL_Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="imgui-docking\SDL\include\SDL_blendmode.h">
+      <Filter>SDL_Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="imgui-docking\SDL\include\SDL_clipboard.h">
+      <Filter>SDL_Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="imgui-docking\SDL\include\SDL_config.h">
+      <Filter>SDL_Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="imgui-docking\SDL\include\SDL_copying.h">
+      <Filter>SDL_Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="imgui-docking\SDL\include\SDL_cpuinfo.h">
+      <Filter>SDL_Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="imgui-docking\SDL\include\SDL_egl.h">
+      <Filter>SDL_Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="imgui-docking\SDL\include\SDL_endian.h">
+      <Filter>SDL_Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="imgui-docking\SDL\include\SDL_error.h">
+      <Filter>SDL_Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="imgui-docking\SDL\include\SDL_events.h">
+      <Filter>SDL_Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="imgui-docking\SDL\include\SDL_filesystem.h">
+      <Filter>SDL_Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="imgui-docking\SDL\include\SDL_gamecontroller.h">
+      <Filter>SDL_Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="imgui-docking\SDL\include\SDL_gesture.h">
+      <Filter>SDL_Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="imgui-docking\SDL\include\SDL_guid.h">
+      <Filter>SDL_Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="imgui-docking\SDL\include\SDL_haptic.h">
+      <Filter>SDL_Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="imgui-docking\SDL\include\SDL_hidapi.h">
+      <Filter>SDL_Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="imgui-docking\SDL\include\SDL_hints.h">
+      <Filter>SDL_Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="imgui-docking\SDL\include\SDL_joystick.h">
+      <Filter>SDL_Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="imgui-docking\SDL\include\SDL_keyboard.h">
+      <Filter>SDL_Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="imgui-docking\SDL\include\SDL_keycode.h">
+      <Filter>SDL_Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="imgui-docking\SDL\include\SDL_loadso.h">
+      <Filter>SDL_Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="imgui-docking\SDL\include\SDL_locale.h">
+      <Filter>SDL_Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="imgui-docking\SDL\include\SDL_log.h">
+      <Filter>SDL_Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="imgui-docking\SDL\include\SDL_main.h">
+      <Filter>SDL_Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="imgui-docking\SDL\include\SDL_messagebox.h">
+      <Filter>SDL_Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="imgui-docking\SDL\include\SDL_metal.h">
+      <Filter>SDL_Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="imgui-docking\SDL\include\SDL_misc.h">
+      <Filter>SDL_Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="imgui-docking\SDL\include\SDL_mouse.h">
+      <Filter>SDL_Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="imgui-docking\SDL\include\SDL_mutex.h">
+      <Filter>SDL_Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="imgui-docking\SDL\include\SDL_name.h">
+      <Filter>SDL_Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="imgui-docking\SDL\include\SDL_opengl.h">
+      <Filter>SDL_Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="imgui-docking\SDL\include\SDL_opengl_glext.h">
+      <Filter>SDL_Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="imgui-docking\SDL\include\SDL_opengles.h">
+      <Filter>SDL_Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="imgui-docking\SDL\include\SDL_opengles2.h">
+      <Filter>SDL_Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="imgui-docking\SDL\include\SDL_opengles2_gl2.h">
+      <Filter>SDL_Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="imgui-docking\SDL\include\SDL_opengles2_gl2ext.h">
+      <Filter>SDL_Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="imgui-docking\SDL\include\SDL_opengles2_gl2platform.h">
+      <Filter>SDL_Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="imgui-docking\SDL\include\SDL_opengles2_khrplatform.h">
+      <Filter>SDL_Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="imgui-docking\SDL\include\SDL_pixels.h">
+      <Filter>SDL_Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="imgui-docking\SDL\include\SDL_platform.h">
+      <Filter>SDL_Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="imgui-docking\SDL\include\SDL_power.h">
+      <Filter>SDL_Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="imgui-docking\SDL\include\SDL_quit.h">
+      <Filter>SDL_Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="imgui-docking\SDL\include\SDL_rect.h">
+      <Filter>SDL_Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="imgui-docking\SDL\include\SDL_render.h">
+      <Filter>SDL_Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="imgui-docking\SDL\include\SDL_revision.h">
+      <Filter>SDL_Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="imgui-docking\SDL\include\SDL_rwops.h">
+      <Filter>SDL_Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="imgui-docking\SDL\include\SDL_scancode.h">
+      <Filter>SDL_Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="imgui-docking\SDL\include\SDL_sensor.h">
+      <Filter>SDL_Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="imgui-docking\SDL\include\SDL_shape.h">
+      <Filter>SDL_Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="imgui-docking\SDL\include\SDL_stdinc.h">
+      <Filter>SDL_Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="imgui-docking\SDL\include\SDL_surface.h">
+      <Filter>SDL_Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="imgui-docking\SDL\include\SDL_system.h">
+      <Filter>SDL_Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="imgui-docking\SDL\include\SDL_syswm.h">
+      <Filter>SDL_Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="imgui-docking\SDL\include\SDL_test.h">
+      <Filter>SDL_Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="imgui-docking\SDL\include\SDL_test_assert.h">
+      <Filter>SDL_Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="imgui-docking\SDL\include\SDL_test_common.h">
+      <Filter>SDL_Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="imgui-docking\SDL\include\SDL_test_compare.h">
+      <Filter>SDL_Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="imgui-docking\SDL\include\SDL_test_crc32.h">
+      <Filter>SDL_Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="imgui-docking\SDL\include\SDL_test_font.h">
+      <Filter>SDL_Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="imgui-docking\SDL\include\SDL_test_fuzzer.h">
+      <Filter>SDL_Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="imgui-docking\SDL\include\SDL_test_harness.h">
+      <Filter>SDL_Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="imgui-docking\SDL\include\SDL_test_images.h">
+      <Filter>SDL_Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="imgui-docking\SDL\include\SDL_test_log.h">
+      <Filter>SDL_Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="imgui-docking\SDL\include\SDL_test_md5.h">
+      <Filter>SDL_Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="imgui-docking\SDL\include\SDL_test_memory.h">
+      <Filter>SDL_Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="imgui-docking\SDL\include\SDL_test_random.h">
+      <Filter>SDL_Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="imgui-docking\SDL\include\SDL_thread.h">
+      <Filter>SDL_Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="imgui-docking\SDL\include\SDL_timer.h">
+      <Filter>SDL_Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="imgui-docking\SDL\include\SDL_touch.h">
+      <Filter>SDL_Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="imgui-docking\SDL\include\SDL_types.h">
+      <Filter>SDL_Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="imgui-docking\SDL\include\SDL_version.h">
+      <Filter>SDL_Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="imgui-docking\SDL\include\SDL_video.h">
+      <Filter>SDL_Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="imgui-docking\SDL\include\SDL_vulkan.h">
+      <Filter>SDL_Headers</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
