@@ -6,7 +6,7 @@
 #include <gl/GLU.h>
 
 #include "imgui.h" // including imgui.h 21/09/23
-#include "backends/imgui_impl_sdl.h"
+#include "backends/imgui_impl_sdl2.h"
 #include "backends/imgui_impl_opengl3.h"
 
 #include <stdio.h>

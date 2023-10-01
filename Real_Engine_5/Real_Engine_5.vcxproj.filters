@@ -288,9 +288,6 @@
     <ClInclude Include="imgui-docking\backends\imgui_impl_opengl3_loader.h">
       <Filter>ImGui\backends</Filter>
     </ClInclude>
-    <ClInclude Include="imgui-docking\backends\imgui_impl_sdl.h">
-      <Filter>ImGui\backends</Filter>
-    </ClInclude>
     <ClInclude Include="imgui-docking\backends\imgui_impl_sdl2.h">
       <Filter>ImGui\backends</Filter>
     </ClInclude>
@@ -687,9 +684,6 @@
       <Filter>ImGui</Filter>
     </ClCompile>
     <ClCompile Include="imgui-docking\backends\imgui_impl_opengl3.cpp">
-      <Filter>ImGui\backends</Filter>
-    </ClCompile>
-    <ClCompile Include="imgui-docking\backends\imgui_impl_sdl.cpp">
       <Filter>ImGui\backends</Filter>
     </ClCompile>
     <ClCompile Include="imgui-docking\backends\imgui_impl_sdl2.cpp">
