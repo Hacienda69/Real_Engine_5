@@ -134,7 +134,7 @@ bool ModuleRenderer3D::Init()
 		glEnable(GL_LIGHTING);
 		glEnable(GL_COLOR_MATERIAL);
 
-		//glewInit();
+		glewInit();
 	}
 
 	// Projection matrix for
@@ -142,7 +142,6 @@ bool ModuleRenderer3D::Init()
 
 	Grid.axis = true;
 
-	/* esto en lugar de lo de imgui de abajo
 	VBO = 0;
 	EBO = 0;
 	VAO = 0;
@@ -162,7 +161,6 @@ bool ModuleRenderer3D::Init()
 	glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(float), (void*)0);
 	glEnableVertexAttribArray(0);
 	glBindVertexArray(0);
-	*/
 
 	// Setup Dear ImGui context
 	IMGUI_CHECKVERSION();
@@ -204,7 +202,7 @@ update_status ModuleRenderer3D::PostUpdate(float dt)
 {
 	Grid.Render();
 
-	////Draw test here
+	//Draw test here
 	//glLineWidth(2.0f);
 	//glBegin(GL_TRIANGLES);
 
@@ -231,13 +229,13 @@ update_status ModuleRenderer3D::PostUpdate(float dt)
 bool ModuleRenderer3D::CleanUp()
 {
 	LOG("Destroying 3D Renderer");
-	/*
+	
 	if (VBO != 0)
 	{
 		glDeleteBuffers(1, &VBO);
 		VBO = 0;
 	}
-	*/
+	
 	SDL_GL_DeleteContext(context);
 
 	return true;

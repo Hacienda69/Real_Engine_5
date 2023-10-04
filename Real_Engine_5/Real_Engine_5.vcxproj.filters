@@ -46,6 +46,9 @@
     <Filter Include="SDL_Headers">
       <UniqueIdentifier>{b8804d41-0429-4f4f-b34d-65a499c6e1c9}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Externals\Glew">
+      <UniqueIdentifier>{18dc771d-d4f1-4875-b9ef-516d6f2fdad2}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Module.h">
@@ -533,6 +536,18 @@
     </ClInclude>
     <ClInclude Include="SDL\include\SDL_vulkan.h">
       <Filter>SDL_Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="Glew\include\eglew.h">
+      <Filter>Externals\Glew</Filter>
+    </ClInclude>
+    <ClInclude Include="Glew\include\glew.h">
+      <Filter>Externals\Glew</Filter>
+    </ClInclude>
+    <ClInclude Include="Glew\include\glxew.h">
+      <Filter>Externals\Glew</Filter>
+    </ClInclude>
+    <ClInclude Include="Glew\include\wglew.h">
+      <Filter>Externals\Glew</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
