@@ -67,26 +67,28 @@ update_status ModuleCamera3D::Update(float dt)
 		}
 	}
 
+
 	if (App->input->GetMouseButton(SDL_BUTTON_MIDDLE)) 
 	{ 
-		int dx = -App->input->GetMouseXMotion();
-		int dy = -App->input->GetMouseYMotion();
-
-		float Sensitivity = 0.35f * dt;
-
-		float3 vectorToReference = Reference - Position;
-
-		if (dx != 0)
+		if (App->input->GetKey(SDL_SCANCODE_LALT) == KEY_REPEAT) 
 		{
-			float DeltaX = (float)dx * Sensitivity;
-			if (DeltaX > 0) newPos += X * DeltaX;
-			if (DeltaX < 0) newPos += X * DeltaX;
-		}
-		if (dy != 0)
-		{
-			float DeltaY = (float)dy * Sensitivity;
-			if (DeltaY > 0) newPos += Y * DeltaY;
-			if (DeltaY < 0) newPos += Y * DeltaY;
+			int dx = -App->input->GetMouseXMotion();
+			int dy = -App->input->GetMouseYMotion();
+
+			float Sensitivity = 0.35f;
+
+			float3 vectorToReference = Reference - Position;
+
+			if (dx != 0)
+			{
+				float DeltaX = (float)dx * Sensitivity;
+				newPos += X * DeltaX * speed / 2;
+			}
+			if (dy != 0)
+			{
+				float DeltaY = (float)dy * Sensitivity;
+				newPos += -Y * DeltaY * speed / 2;
+			}
 		}
 	}
 
