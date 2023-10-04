@@ -16,6 +16,7 @@ ModuleWindow::~ModuleWindow()
 // Called before render is available
 bool ModuleWindow::Init()
 {
+
 	LOG("Init SDL window & surface");
 	bool ret = true;
 
@@ -85,6 +86,7 @@ bool ModuleWindow::CleanUp()
 
 	//Quit SDL subsystems
 	SDL_Quit();
+
 	return true;
 }
 

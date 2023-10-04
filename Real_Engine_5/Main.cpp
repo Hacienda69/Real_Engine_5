@@ -23,6 +23,8 @@ int main(int argc, char ** argv)
 	main_states state = MAIN_CREATION;
 	Application* App = NULL;
 
+	AppShouldClose = false;
+
 	while (state != MAIN_EXIT)
 	{
 		switch (state)
