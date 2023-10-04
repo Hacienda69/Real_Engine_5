@@ -49,6 +49,9 @@
     <Filter Include="Externals\Glew">
       <UniqueIdentifier>{18dc771d-d4f1-4875-b9ef-516d6f2fdad2}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Externals\PCG_%28RNG%29">
+      <UniqueIdentifier>{171691ac-7f9b-4fe3-864d-f578b0921194}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Module.h">
@@ -548,6 +551,15 @@
     </ClInclude>
     <ClInclude Include="Glew\include\wglew.h">
       <Filter>Externals\Glew</Filter>
+    </ClInclude>
+    <ClInclude Include="pcg-cpp-0.98\include\pcg_extras.hpp">
+      <Filter>Externals\PCG_%28RNG%29</Filter>
+    </ClInclude>
+    <ClInclude Include="pcg-cpp-0.98\include\pcg_random.hpp">
+      <Filter>Externals\PCG_%28RNG%29</Filter>
+    </ClInclude>
+    <ClInclude Include="pcg-cpp-0.98\include\pcg_uint128.hpp">
+      <Filter>Externals\PCG_%28RNG%29</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
