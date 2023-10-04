@@ -202,7 +202,8 @@ update_status ModuleRenderer3D::PostUpdate(float dt)
 {
 	Grid.Render();
 
-	//Draw test here
+	//TIESTO 
+	////Draw test here
 	//glLineWidth(2.0f);
 	//glBegin(GL_TRIANGLES);
 

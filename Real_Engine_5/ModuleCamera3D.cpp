@@ -44,23 +44,28 @@ update_status ModuleCamera3D::Update(float dt)
 	// Implement a debug camera with keys and mouse
 	// Now we can make this movememnt frame rate independant!
 	float3 newPos(0,0,0);
-	float speed = 3.0f * dt;
+	float speed = 7.0f * dt;
 	if(App->input->GetKey(SDL_SCANCODE_LSHIFT) == KEY_REPEAT)
-		speed = 8.0f * dt;
+		speed = 14.0f * dt;
+
+	if (App->input->GetKey(SDL_SCANCODE_R) == KEY_REPEAT) newPos.y += speed;
+	if (App->input->GetKey(SDL_SCANCODE_F) == KEY_REPEAT) newPos.y -= speed;
 
 	// MOVEMENT --------------------------------------------------------------
-	if (App->input->GetMouseButton(SDL_BUTTON_RIGHT) == KEY_REPEAT) {
-		if (App->input->GetKey(SDL_SCANCODE_R) == KEY_REPEAT) newPos.y += speed;
-		if (App->input->GetKey(SDL_SCANCODE_F) == KEY_REPEAT) newPos.y -= speed;
-
+	if (App->input->GetMouseButton(SDL_BUTTON_RIGHT) == KEY_REPEAT) 
+	{
 		if (App->input->GetKey(SDL_SCANCODE_W) == KEY_REPEAT) newPos -= Z * speed;
 		if (App->input->GetKey(SDL_SCANCODE_S) == KEY_REPEAT) newPos += Z * speed;
 		if (App->input->GetKey(SDL_SCANCODE_A) == KEY_REPEAT) newPos -= X * speed;
 		if (App->input->GetKey(SDL_SCANCODE_D) == KEY_REPEAT) newPos += X * speed;
 	}
 
-	Position += newPos;
-	Reference += newPos;
+	if (App->input->GetMouseButton(SDL_BUTTON_RIGHT) == KEY_REPEAT) {
+		if (App->input->GetKey(SDL_SCANCODE_LALT) == KEY_REPEAT) {
+			First_Person = false;
+			Rotate_Camera = true;
+		}
+	}
 
 	if (App->input->GetMouseButton(SDL_BUTTON_MIDDLE)) 
 	{ 
@@ -74,17 +79,19 @@ update_status ModuleCamera3D::Update(float dt)
 		if (dx != 0)
 		{
 			float DeltaX = (float)dx * Sensitivity;
-
-
+			if (DeltaX > 0) newPos += X * DeltaX;
+			if (DeltaX < 0) newPos += X * DeltaX;
 		}
-
 		if (dy != 0)
 		{
 			float DeltaY = (float)dy * Sensitivity;
-
-
+			if (DeltaY > 0) newPos += Y * DeltaY;
+			if (DeltaY < 0) newPos += Y * DeltaY;
 		}
 	}
+
+	Position += newPos;
+	Reference += newPos;
 
 	// ROTATION --------------------------------------------------------------
 	//LALT + Left_Click: rotate around reference
@@ -207,3 +214,4 @@ void ModuleCamera3D::ChangeReference(const bool &firstperson)
 		Position = Reference + Z * Position.Length();
 	}
 }
+
