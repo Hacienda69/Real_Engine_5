@@ -17,7 +17,7 @@ void log(const char file[], int line, const char* format, ...);
 #define RADTODEG 57.295779513082320876f
 #define PI 3.14159265358979323846264338327950288
 
-bool AppShouldClose;
+//bool AppShouldClose;
 
 typedef unsigned int uint;
 
