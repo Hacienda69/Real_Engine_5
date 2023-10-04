@@ -48,17 +48,45 @@ update_status ModuleCamera3D::Update(float dt)
 	if(App->input->GetKey(SDL_SCANCODE_LSHIFT) == KEY_REPEAT)
 		speed = 8.0f * dt;
 
-	if(App->input->GetKey(SDL_SCANCODE_R) == KEY_REPEAT) newPos.y += speed;
-	if(App->input->GetKey(SDL_SCANCODE_F) == KEY_REPEAT) newPos.y -= speed;
+	// MOVEMENT --------------------------------------------------------------
+	if (App->input->GetMouseButton(SDL_BUTTON_RIGHT) == KEY_REPEAT) {
+		if (App->input->GetKey(SDL_SCANCODE_R) == KEY_REPEAT) newPos.y += speed;
+		if (App->input->GetKey(SDL_SCANCODE_F) == KEY_REPEAT) newPos.y -= speed;
 
-	if(App->input->GetKey(SDL_SCANCODE_W) == KEY_REPEAT) newPos -= Z * speed;
-	if(App->input->GetKey(SDL_SCANCODE_S) == KEY_REPEAT) newPos += Z * speed;
-	if(App->input->GetKey(SDL_SCANCODE_A) == KEY_REPEAT) newPos -= X * speed;
-	if(App->input->GetKey(SDL_SCANCODE_D) == KEY_REPEAT) newPos += X * speed;
+		if (App->input->GetKey(SDL_SCANCODE_W) == KEY_REPEAT) newPos -= Z * speed;
+		if (App->input->GetKey(SDL_SCANCODE_S) == KEY_REPEAT) newPos += Z * speed;
+		if (App->input->GetKey(SDL_SCANCODE_A) == KEY_REPEAT) newPos -= X * speed;
+		if (App->input->GetKey(SDL_SCANCODE_D) == KEY_REPEAT) newPos += X * speed;
+	}
 
 	Position += newPos;
 	Reference += newPos;
 
+	if (App->input->GetMouseButton(SDL_BUTTON_MIDDLE)) 
+	{ 
+		int dx = -App->input->GetMouseXMotion();
+		int dy = -App->input->GetMouseYMotion();
+
+		float Sensitivity = 0.35f * dt;
+
+		float3 vectorToReference = Reference - Position;
+
+		if (dx != 0)
+		{
+			float DeltaX = (float)dx * Sensitivity;
+
+
+		}
+
+		if (dy != 0)
+		{
+			float DeltaY = (float)dy * Sensitivity;
+
+
+		}
+	}
+
+	// ROTATION --------------------------------------------------------------
 	//LALT + Left_Click: rotate around reference
 	if (App->input->GetMouseButton(SDL_BUTTON_LEFT) == KEY_REPEAT) {
 		if (App->input->GetKey(SDL_SCANCODE_LALT) == KEY_REPEAT) {
@@ -78,7 +106,7 @@ update_status ModuleCamera3D::Update(float dt)
 		Rotate_Camera = false;
 	}
 
-	// Mouse motion ----------------
+	// Mouse motion ----------------------------------------------------------
 	if (Rotate_Camera) ChangeReference(First_Person);
 	LookAt(Reference);
 
@@ -88,7 +116,7 @@ update_status ModuleCamera3D::Update(float dt)
 	return UPDATE_CONTINUE;
 }
 
-// -----------------------------------------------------------------
+// ---------------------------------------------------------------------------
 void ModuleCamera3D::Look(const float3&Position, const float3&Reference, bool RotateAroundReference)
 {
 	this->Position = Position;
