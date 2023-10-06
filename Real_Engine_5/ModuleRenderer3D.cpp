@@ -204,21 +204,25 @@ update_status ModuleRenderer3D::PostUpdate(float dt)
 
 	//TIESTO 
 	////Draw test here
-	//glLineWidth(2.0f);
-	//glBegin(GL_TRIANGLES);
+	glLineWidth(2.0f);
+	glBegin(GL_TRIANGLES);
 
-	//glVertex3d(0,0,0); glVertex3d(1,1,0); glVertex3d(1,0,0);
-	//glVertex3d(0,0,0); glVertex3d(0,1,0); glVertex3d(1,1,0);
+	glVertex3d(0,0,0); glVertex3d(1,1,0); glVertex3d(1,0,0);
+	glVertex3d(0,0,0); glVertex3d(0,1,0); glVertex3d(1,1,0);
 
-	//glVertex3d(0, 0, 0); glVertex3d(0, 1, 1); glVertex3d(0, 1, 0);
-	//glVertex3d(0, 0, 1); glVertex3d(0, 1, 1); glVertex3d(0, 0, 0);
+	glVertex3d(0, 0, 0); glVertex3d(0, 1, 1); glVertex3d(0, 1, 0);
+	glVertex3d(0, 0, 1); glVertex3d(0, 1, 1); glVertex3d(0, 0, 0);
 
-	//glEnd();
-	//glLineWidth(1.0f);
+	glEnd();
+	glLineWidth(1.0f);
 
+	glBindBuffer(GL_ARRAY_BUFFER, VBO);
+	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, EBO);
+	glEnableClientState(GL_VERTEX_ARRAY);
+	glVertexPointer(3, GL_FLOAT, 0, NULL);
 	//glBindVertexArray(VAO);
 	////glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, EBO);
-	//glDrawElements(GL_TRIANGLES, 36, GL_UNSIGNED_INT, NULL);
+	glDrawElements(GL_TRIANGLES, 36, GL_UNSIGNED_INT, NULL);
 
 	App->editor->DrawEditor();
 
