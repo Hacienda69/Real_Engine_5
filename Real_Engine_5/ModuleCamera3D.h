@@ -32,7 +32,7 @@ private:
 public:
 	
 	//You won't need this after using Frustum
-	float3 X, Y, Z, Position, Reference;
+	float3 X, Y, Z, Position, Reference, distanceToReference;
 	float dt;
 
 private:

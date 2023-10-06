@@ -11,6 +11,7 @@ ModuleCamera3D::ModuleCamera3D(Application* app, bool start_enabled) : Module(ap
 
 	Position = float3(0.0f, 10.0f, 5.0f);
 	Reference = float3(0.0f, 0.0f, 0.0f);
+
 	ViewMatrix = IdentityMatrix;
 
 	CalculateViewMatrix();
@@ -41,16 +42,21 @@ update_status ModuleCamera3D::Update(float dt)
 {
 	this->dt = dt;
 
+	distanceToReference = Reference - Position;
+
 	// Implement a debug camera with keys and mouse
 	// Now we can make this movememnt frame rate independant!
-	float3 newPos(0,0,0);
+	float3 newPos(0, 0, 0);
 	float speed = 7.0f * dt;
-	if(App->input->GetKey(SDL_SCANCODE_LSHIFT) == KEY_REPEAT)
+	if (App->input->GetKey(SDL_SCANCODE_LSHIFT) == KEY_REPEAT)
 		speed = 14.0f * dt;
 
-	if (App->input->GetKey(SDL_SCANCODE_R) == KEY_REPEAT) newPos.y += speed;
-	if (App->input->GetKey(SDL_SCANCODE_F) == KEY_REPEAT) newPos.y -= speed;
-
+	if (App->input->GetMouseZ() != 0) 
+	{
+		newPos += Z * -speed * App->input->GetMouseZ() * 10;
+		Position += newPos;
+	}
+	 
 	// MOVEMENT --------------------------------------------------------------
 	if (App->input->GetMouseButton(SDL_BUTTON_RIGHT) == KEY_REPEAT) 
 	{
@@ -58,15 +64,10 @@ update_status ModuleCamera3D::Update(float dt)
 		if (App->input->GetKey(SDL_SCANCODE_S) == KEY_REPEAT) newPos += Z * speed;
 		if (App->input->GetKey(SDL_SCANCODE_A) == KEY_REPEAT) newPos -= X * speed;
 		if (App->input->GetKey(SDL_SCANCODE_D) == KEY_REPEAT) newPos += X * speed;
-	}
 
-	if (App->input->GetMouseButton(SDL_BUTTON_RIGHT) == KEY_REPEAT) {
-		if (App->input->GetKey(SDL_SCANCODE_LALT) == KEY_REPEAT) {
-			First_Person = false;
-			Rotate_Camera = true;
-		}
+		Position += newPos;
+		Reference += newPos;
 	}
-
 
 	if (App->input->GetMouseButton(SDL_BUTTON_MIDDLE)) 
 	{ 
@@ -76,8 +77,6 @@ update_status ModuleCamera3D::Update(float dt)
 			int dy = -App->input->GetMouseYMotion();
 
 			float Sensitivity = 0.35f;
-
-			float3 vectorToReference = Reference - Position;
 
 			if (dx != 0)
 			{
@@ -90,10 +89,10 @@ update_status ModuleCamera3D::Update(float dt)
 				newPos += -Y * DeltaY * speed / 2;
 			}
 		}
-	}
 
-	Position += newPos;
-	Reference += newPos;
+		Position += newPos;
+		Reference += newPos;
+	}
 
 	// ROTATION --------------------------------------------------------------
 	//LALT + Left_Click: rotate around reference
