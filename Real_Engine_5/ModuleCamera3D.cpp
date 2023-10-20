@@ -71,27 +71,31 @@ update_status ModuleCamera3D::Update(float dt)
 
 	if (App->input->GetMouseButton(SDL_BUTTON_MIDDLE)) 
 	{ 
-		if (App->input->GetKey(SDL_SCANCODE_LALT) == KEY_REPEAT) 
+
+		int dx = -App->input->GetMouseXMotion();
+		int dy = -App->input->GetMouseYMotion();
+
+		float Sensitivity = 0.35f;
+
+		if (dx != 0)
 		{
-			int dx = -App->input->GetMouseXMotion();
-			int dy = -App->input->GetMouseYMotion();
-
-			float Sensitivity = 0.35f;
-
-			if (dx != 0)
-			{
-				float DeltaX = (float)dx * Sensitivity;
-				newPos += X * DeltaX * speed / 2;
-			}
-			if (dy != 0)
-			{
-				float DeltaY = (float)dy * Sensitivity;
-				newPos += -Y * DeltaY * speed / 2;
-			}
+			float DeltaX = (float)dx * Sensitivity;
+			newPos += X * DeltaX * speed / 2;
+		}
+		if (dy != 0)
+		{
+			float DeltaY = (float)dy * Sensitivity;
+			newPos += -Y * DeltaY * speed / 2;
 		}
 
 		Position += newPos;
 		Reference += newPos;
+	}
+
+	//ZOOM -------------------------------------------------------------------
+	if (App->input->GetKey(SDL_SCANCODE_F) == KEY_DOWN) 
+	{
+
 	}
 
 	// ROTATION --------------------------------------------------------------
