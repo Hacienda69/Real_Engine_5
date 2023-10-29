@@ -72,12 +72,16 @@ void ModuleEditor::DrawEditor()
 				
 				ImGui::SeparatorText("ABOUT THE AUTHORS:");
 				ImGui::BulletText("Marc Escandell Alonso");
-				ImGui::Text("Marc's Github: https://github.com/MrMonkey420");
+
+				if (ImGui::MenuItem("	Marc's Github: https://github.com/MrMonkey420"))
+						ShellExecute(NULL, "OPEN", "https://github.com/MrMonkey420", NULL, NULL, SW_SHOW);
 
 				ImGui::Text(" ");
 
 				ImGui::BulletText("Daniel Manas Calvo");
-				ImGui::Text("Daniel's Github: https://github.com/Hacienda69");
+
+				if (ImGui::MenuItem("	Dani's Github: https://github.com/Hacienda69"))
+					ShellExecute(NULL, "OPEN", "https://github.com/Hacienda69", NULL, NULL, SW_SHOW);
 
 				ImGui::Text(" ");
 
@@ -125,14 +129,8 @@ void ModuleEditor::DrawEditor()
 		ImGui::EndMainMenuBar();
 	}
 
-	if (ImGui::Begin("Configuration"))
-	{
-		ImGui::PlotHistogram("FPS", mFPSLog.data(), mFPSLog.size());
-		ImGui::End();
-	}
-
 	ImGui::ShowDemoWindow();
-	
+
 	ImGui::Render();
 	ImGui_ImplOpenGL3_RenderDrawData(ImGui::GetDrawData());
 }
