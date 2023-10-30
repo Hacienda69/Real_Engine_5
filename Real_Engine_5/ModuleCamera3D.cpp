@@ -11,6 +11,7 @@ ModuleCamera3D::ModuleCamera3D(Application* app, bool start_enabled) : Module(ap
 
 	Position = float3(0.0f, 10.0f, 5.0f);
 	Reference = float3(0.0f, 0.0f, 0.0f);
+	defaultDistToRef = Reference - Position;
 
 	ViewMatrix = IdentityMatrix;
 
@@ -42,6 +43,8 @@ update_status ModuleCamera3D::Update(float dt)
 {
 	this->dt = dt;
 
+	Cursor = Cursor::ARROW;
+
 	distanceToReference = Reference - Position;
 
 	// Implement a debug camera with keys and mouse
@@ -71,6 +74,7 @@ update_status ModuleCamera3D::Update(float dt)
 
 	if (App->input->GetMouseButton(SDL_BUTTON_MIDDLE)) 
 	{ 
+		Cursor = Cursor::RESIZE_ALL;
 
 		int dx = -App->input->GetMouseXMotion();
 		int dy = -App->input->GetMouseYMotion();
@@ -95,7 +99,11 @@ update_status ModuleCamera3D::Update(float dt)
 	//ZOOM -------------------------------------------------------------------
 	if (App->input->GetKey(SDL_SCANCODE_F) == KEY_DOWN) 
 	{
+		float3 auxReference = float3(0, 0, 0);
 
+		Reference = auxReference;
+
+		Position = Reference + defaultDistToRef.Abs();
 	}
 
 	// ROTATION --------------------------------------------------------------
@@ -121,6 +129,9 @@ update_status ModuleCamera3D::Update(float dt)
 	// Mouse motion ----------------------------------------------------------
 	if (Rotate_Camera) ChangeReference(First_Person);
 	LookAt(Reference);
+
+	// Change cursor
+	
 
 	// Recalculate matrix -------------
 	CalculateViewMatrix();
@@ -219,4 +230,3 @@ void ModuleCamera3D::ChangeReference(const bool &firstperson)
 		Position = Reference + Z * Position.Length();
 	}
 }
-

@@ -7,6 +7,15 @@
 //todo: REMOVE this before 1st delivery!!
 #include "glmath.h"
 
+enum Cursor {
+	ARROW,
+	RESIZE_ALL,
+	RESIZE_NS,
+	RESIZE_EW,
+	HAND,
+	NOT_ALLOWED
+};
+
 class ModuleCamera3D : public Module
 {
 public:
@@ -29,10 +38,12 @@ private:
 
 	void CalculateViewMatrix();
 
+	void ChangeCursor();
+
 public:
 	
 	//You won't need this after using Frustum
-	float3 X, Y, Z, Position, Reference, distanceToReference;
+	float3 X, Y, Z, Position, Reference, distanceToReference, defaultDistToRef;
 	float dt;
 
 private:
@@ -45,4 +56,7 @@ private:
 
 	mat4x4 ViewMatrix;
 	//Frustum mMainCamera; Some help here :)
+
+	//Target cursor for fancier experience
+	Cursor Cursor;
 };
