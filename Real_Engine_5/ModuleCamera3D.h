@@ -37,9 +37,6 @@ private:
 	void ChangeReference(const bool &firstperson);
 
 	void CalculateViewMatrix();
-
-	void ChangeCursor();
-
 public:
 	
 	//You won't need this after using Frustum

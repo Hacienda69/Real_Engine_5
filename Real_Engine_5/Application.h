@@ -27,6 +27,8 @@ public:
 	ModuleCamera3D* camera;
 	ModuleEditor* editor;
 
+	float targetFPS = 60;
+
 private:
 
 	Timer	ms_timer;
@@ -41,6 +43,8 @@ public:
 	bool Init();
 	update_status Update();
 	bool CleanUp();
+
+	float GetDt();
 
 private:
 

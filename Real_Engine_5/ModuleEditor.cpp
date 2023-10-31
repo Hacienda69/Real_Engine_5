@@ -27,11 +27,25 @@ bool ModuleEditor::Init()
 	ImGui_ImplSDL2_InitForOpenGL(App->window->window, App->renderer3D->context);
 	ImGui_ImplOpenGL3_Init();
 
-	mFPSLog.reserve(30);
+	fps_Log.reserve(30);
+	ms_Log.reserve(30);
 
 	return true;
 }
 
+bool ModuleEditor::CleanUp()
+{
+	fps_Log.clear();
+	ms_Log.clear();
+
+	ImGui_ImplOpenGL3_Shutdown();
+	ImGui_ImplSDL2_Shutdown();
+	ImGui::DestroyContext();
+
+	return true;
+}
+
+// Window functions -------------------------------------------------------------------
 void ModuleEditor::DrawEditor()
 {
 	ImGui_ImplOpenGL3_NewFrame();
@@ -42,12 +56,10 @@ void ModuleEditor::DrawEditor()
 	{
 		if (ImGui::BeginMenu("File"))
 		{
-			ImGui::Text("Hello world!");
 			ImGui::EndMenu();
 		}
 		if (ImGui::BeginMenu("Assets"))
 		{
-			ImGui::Text("Hello world!");
 			ImGui::EndMenu();
 		}
 		if (ImGui::BeginMenu("Objects"))
@@ -55,16 +67,26 @@ void ModuleEditor::DrawEditor()
 			ImGui::Text("Hello world!");
 			ImGui::EndMenu();
 		}
+
+		if (ImGui::BeginMenu("View")) {
+
+			if (ImGui::Button("Toggle Config"))
+				showConfig = !showConfig;
+
+			if (ImGui::Button("Toggle Demo"))
+				showDemo = !showDemo;
+
+			ImGui::EndMenu();
+		}
+
 		if (ImGui::BeginMenu("Help"))
 		{
-			ImGui::Text("Hello world!");
-
 			if (ImGui::CollapsingHeader("About"))
 			{
 				ImGui::SeparatorText("ABOUT THE ENGINE:");
 				ImGui::Text("Real Engine 5 v0.1");
 				ImGui::Text("From the acclaimed studio 'Aprobe Motores', formed by the brilliant");
-				ImGui::Text("developers Marc Escandell and Daniel Mañas, comes 'Real Engine 5',");
+				ImGui::Text("developers Marc Escandell and Daniel Manas, comes 'Real Engine 5',");
 				ImGui::Text("a new cutting - edge video game engine in the thriving virtual");
 				ImGui::Text("entertainment industry, we hope you enjoy it.");
 
@@ -129,37 +151,87 @@ void ModuleEditor::DrawEditor()
 		ImGui::EndMainMenuBar();
 	}
 
-	ImGui::ShowDemoWindow();
+	if (showConfig) DrawConfiguration();
+	if(showDemo) ImGui::ShowDemoWindow();
 
 	ImGui::Render();
 	ImGui_ImplOpenGL3_RenderDrawData(ImGui::GetDrawData());
 }
 
-bool ModuleEditor::CleanUp()
+void ModuleEditor::DrawConfiguration() 
 {
-	ImGui_ImplOpenGL3_Shutdown();
-	ImGui_ImplSDL2_Shutdown();
-	ImGui::DestroyContext();
+	ImGui::Begin("Configuration", &showConfig);
 
-	return true;
+	ImGui::Text("El chiki chiki se baila asi");
+
+	if(ImGui::CollapsingHeader("Application"))
+	{
+		int auxFPS = App->targetFPS;
+		if (ImGui::SliderInt("Max FPS", &auxFPS, 1, 120))
+			App->targetFPS = auxFPS;
+
+		AddFPS(1000 / App->GetDt());
+		AddMS(App->GetDt() * 1000);
+
+		char title[25];
+		sprintf_s(title, 25, "FrameRate %0.1f", fps_Log[fps_Log.size() - 1]);
+		ImGui::PlotHistogram("##FPS Log", &fps_Log[0], fps_Log.size(), 0, title, 0.0f, 50.0f, ImVec2(0.0f, 50.0f));
+		
+		sprintf_s(title, 25, "Milliseconds %0.1f", ms_Log[ms_Log.size() - 1]);
+		ImGui::PlotHistogram("##FPS Log", &ms_Log[0], ms_Log.size(), 0, title, 0.0f, 50.0f, ImVec2(0.0f, 50.0f));
+		
+	}
+	if(ImGui::CollapsingHeader("Window"))
+	{
+		if(ImGui::Checkbox("Fullscreen", &fullscreen)) {}
+		if(ImGui::Checkbox("Resizable", &resizable)) {}
+		if(ImGui::Checkbox("Borderless", &borderless)) {}
+		if(ImGui::Checkbox("full_desktop", &full_desktop)) {} 
+	}
+	if(ImGui::CollapsingHeader("Input"))
+	{
+		
+	}
+	if(ImGui::CollapsingHeader("Hardware"))
+	{
+
+	}
+
+	ImGui::End();
 }
 
 void ModuleEditor::AddFPS(const float aFPS)
 {
-	if (mFPSLog.size() < 30)
+	fps_Log.push_back(aFPS);
+
+	if (fps_Log.size() >= 30)
 	{
-		mFPSLog.push_back(aFPS);
-	}
-	else
-	{
-		for (unsigned int i = 0; i < mFPSLog.size(); i++)
-		{
-			if (i + 1 < mFPSLog.size())
-			{
-				float iCopy = mFPSLog[i + 1];
-				mFPSLog[i] = iCopy;
-			}
+		std::vector<float> auxFPS;
+		for (int i = 1; i < fps_Log.size(); i++)
+			auxFPS.push_back(fps_Log.at(i));
+
+		fps_Log.clear();
+		for (int i = 0; i < auxFPS.size(); i++) {
+			fps_Log.push_back(auxFPS.at(i));
 		}
-		mFPSLog[mFPSLog.capacity() - 1] = aFPS;
+		auxFPS.clear();
+	}
+}
+
+void ModuleEditor::AddMS(const float aMS)
+{
+	ms_Log.push_back(aMS);
+
+	if (ms_Log.size() >= 30)
+	{
+		std::vector<float> auxFPS;
+		for (int i = 1; i < ms_Log.size(); i++)
+			auxFPS.push_back(ms_Log.at(i));
+
+		ms_Log.clear();
+		for (int i = 0; i < auxFPS.size(); i++) {
+			ms_Log.push_back(auxFPS.at(i));
+		}
+		auxFPS.clear();
 	}
 }

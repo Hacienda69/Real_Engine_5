@@ -43,8 +43,6 @@ update_status ModuleCamera3D::Update(float dt)
 {
 	this->dt = dt;
 
-	Cursor = Cursor::ARROW;
-
 	distanceToReference = Reference - Position;
 
 	// Implement a debug camera with keys and mouse
@@ -74,8 +72,6 @@ update_status ModuleCamera3D::Update(float dt)
 
 	if (App->input->GetMouseButton(SDL_BUTTON_MIDDLE)) 
 	{ 
-		Cursor = Cursor::RESIZE_ALL;
-
 		int dx = -App->input->GetMouseXMotion();
 		int dy = -App->input->GetMouseYMotion();
 
@@ -129,9 +125,6 @@ update_status ModuleCamera3D::Update(float dt)
 	// Mouse motion ----------------------------------------------------------
 	if (Rotate_Camera) ChangeReference(First_Person);
 	LookAt(Reference);
-
-	// Change cursor
-	
 
 	// Recalculate matrix -------------
 	CalculateViewMatrix();

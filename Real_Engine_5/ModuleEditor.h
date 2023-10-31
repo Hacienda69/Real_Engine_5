@@ -13,13 +13,31 @@ public:
 	ModuleEditor(Application* app, bool start_enabled = true);
 	~ModuleEditor();
 
-	bool Init() override;
 	//update_status PreUpdate(float dt) override; NO (?)
-	void DrawEditor();
+
+	bool Init() override;
 	bool CleanUp() override;
 
+	void DrawEditor();
+	void DrawConfiguration();
+
 	void AddFPS(const float aFPS);
-	std::vector<float> mFPSLog;
+	void AddMS(const float aMS);
+
+public:
+
+	std::vector<float> fps_Log;
+	std::vector<float> ms_Log;
+
+private:
+	bool showDemo = false;
+	bool showConfig = false;
+
+	bool fullscreen = false;
+	bool resizable = false;
+	bool borderless = false;
+	bool full_desktop = false;
+
 };
 
 #endif //MODULE_EDITOR
