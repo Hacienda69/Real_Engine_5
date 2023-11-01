@@ -20,6 +20,7 @@ public:
 
 	void DrawEditor();
 	void DrawConfiguration();
+	void DrawConsole();
 
 	void AddFPS(const float aFPS);
 	void AddMS(const float aMS);
@@ -32,6 +33,7 @@ public:
 private:
 	bool showDemo = false;
 	bool showConfig = false;
+	bool showConsole = false;
 
 	bool fullscreen = false;
 	bool resizable = false;

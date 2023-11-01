@@ -45,7 +45,7 @@ bool ModuleEditor::CleanUp()
 	return true;
 }
 
-// Window functions -------------------------------------------------------------------
+// Draw functions -------------------------------------------------------------------------------------------------------------------
 void ModuleEditor::DrawEditor()
 {
 	ImGui_ImplOpenGL3_NewFrame();
@@ -72,6 +72,9 @@ void ModuleEditor::DrawEditor()
 
 			if (ImGui::Button("Toggle Config"))
 				showConfig = !showConfig;
+
+			if (ImGui::Button("Toggle Console"))
+				showConsole = !showConsole;
 
 			if (ImGui::Button("Toggle Demo"))
 				showDemo = !showDemo;
@@ -152,6 +155,7 @@ void ModuleEditor::DrawEditor()
 	}
 
 	if (showConfig) DrawConfiguration();
+	if (showConsole) DrawConsole();
 	if(showDemo) ImGui::ShowDemoWindow();
 
 	ImGui::Render();
@@ -200,6 +204,21 @@ void ModuleEditor::DrawConfiguration()
 	ImGui::End();
 }
 
+void ModuleEditor::DrawConsole()
+{
+	ImGui::Begin("Console", &showConsole);
+
+	//ImGui::Text(outputLog.data());
+
+	if (ImGui::Button("Clean Log")) 
+	{
+		//cleanLog = true;
+	}
+
+	ImGui::End();
+}
+
+// Auxiliar functions ---------------------------------------------------------------------------------------------------------------
 void ModuleEditor::AddFPS(const float aFPS)
 {
 	fps_Log.push_back(aFPS);

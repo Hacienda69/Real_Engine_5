@@ -95,6 +95,8 @@ update_status ModuleCamera3D::Update(float dt)
 	//ZOOM -------------------------------------------------------------------
 	if (App->input->GetKey(SDL_SCANCODE_F) == KEY_DOWN) 
 	{
+		LOG("me cagooo");
+
 		float3 auxReference = float3(0, 0, 0);
 
 		Reference = auxReference;
