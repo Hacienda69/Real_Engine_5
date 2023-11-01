@@ -58,6 +58,9 @@
     <Filter Include="Externals\Assimp">
       <UniqueIdentifier>{8090cd69-63c1-42b6-a606-7dd34d3a605d}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Externals\PhysFS">
+      <UniqueIdentifier>{df186297-231c-4436-9b24-1584edc69c51}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Module.h">
@@ -690,6 +693,9 @@
     </ClInclude>
     <ClInclude Include="Assimp\Assimp\include\version.h">
       <Filter>Externals\Assimp</Filter>
+    </ClInclude>
+    <ClInclude Include="PhysFS\include\physfs.h">
+      <Filter>Externals\PhysFS</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

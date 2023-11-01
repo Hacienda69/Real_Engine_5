@@ -57,9 +57,9 @@
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <SubSystem>Windows</SubSystem>
       <ImageHasSafeExceptionHandlers>false</ImageHasSafeExceptionHandlers>
-      <AdditionalDependencies>$(CoreLibraryDependencies);glew32.lib;DevIL.lib;ILU.lib;ILUT.lib;assimp.lib;zlibstatic.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>$(CoreLibraryDependencies);glew32.lib;DevIL.lib;ILU.lib;ILUT.lib;assimp.lib;zlibstatic.lib;physfs.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <IgnoreSpecificDefaultLibraries>msvcrt.lib</IgnoreSpecificDefaultLibraries>
-      <AdditionalLibraryDirectories>C:\Users\Dani\Documents\GitHub\Real_Engine_5\Real_Engine_5\DevIL\libx86;C:\Users\Dani\Documents\GitHub\Real_Engine_5\Real_Engine_5\Assimp\Assimp\libx86</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>C:\Users\Dani\Documents\GitHub\Real_Engine_5\Real_Engine_5\DevIL\libx86;C:\Users\Dani\Documents\GitHub\Real_Engine_5\Real_Engine_5\Assimp\Assimp\libx86;C:\Users\Dani\Documents\GitHub\Real_Engine_5\Real_Engine_5\PhysFS\libx86</AdditionalLibraryDirectories>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -213,6 +213,7 @@
     <ClInclude Include="pcg-cpp-0.98\include\pcg_extras.hpp" />
     <ClInclude Include="pcg-cpp-0.98\include\pcg_random.hpp" />
     <ClInclude Include="pcg-cpp-0.98\include\pcg_uint128.hpp" />
+    <ClInclude Include="PhysFS\include\physfs.h" />
     <ClInclude Include="Primitive.h" />
     <ClInclude Include="SDL\include\begin_code.h" />
     <ClInclude Include="SDL\include\close_code.h" />
