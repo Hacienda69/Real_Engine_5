@@ -52,6 +52,9 @@
     <Filter Include="Externals\PCG_%28RNG%29">
       <UniqueIdentifier>{171691ac-7f9b-4fe3-864d-f578b0921194}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Externals\DevIL">
+      <UniqueIdentifier>{b922a379-4f81-4eb0-93a3-4f7aa7a8fe81}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Module.h">
@@ -561,6 +564,31 @@
     <ClInclude Include="pcg-cpp-0.98\include\pcg_uint128.hpp">
       <Filter>Externals\PCG_%28RNG%29</Filter>
     </ClInclude>
+    <ClInclude Include="parson-master\parson-master\parson.h" />
+    <ClInclude Include="DevIL\include\devil_cpp_wrapper.hpp">
+      <Filter>Externals\DevIL</Filter>
+    </ClInclude>
+    <ClInclude Include="DevIL\include\devil_internal_exports.h">
+      <Filter>Externals\DevIL</Filter>
+    </ClInclude>
+    <ClInclude Include="DevIL\include\il.h">
+      <Filter>Externals\DevIL</Filter>
+    </ClInclude>
+    <ClInclude Include="DevIL\include\il_wrap.h">
+      <Filter>Externals\DevIL</Filter>
+    </ClInclude>
+    <ClInclude Include="DevIL\include\ilu.h">
+      <Filter>Externals\DevIL</Filter>
+    </ClInclude>
+    <ClInclude Include="DevIL\include\ilu_region.h">
+      <Filter>Externals\DevIL</Filter>
+    </ClInclude>
+    <ClInclude Include="DevIL\include\ilut.h">
+      <Filter>Externals\DevIL</Filter>
+    </ClInclude>
+    <ClInclude Include="DevIL\include\ilut_config.h">
+      <Filter>Externals\DevIL</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="ModuleCamera3D.cpp">
@@ -725,6 +753,7 @@
     <ClCompile Include="Testing.cpp">
       <Filter>Sources\Helpers</Filter>
     </ClCompile>
+    <ClCompile Include="parson-master\parson-master\parson.c" />
   </ItemGroup>
   <ItemGroup>
     <None Include="MathGeoLib\include\Geometry\KDTree.inl">
