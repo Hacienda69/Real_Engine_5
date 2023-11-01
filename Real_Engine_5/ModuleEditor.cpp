@@ -6,6 +6,7 @@
 #include "backends/imgui_impl_opengl3.h"
 #include "backends/imgui_impl_sdl2.h"
 
+
 ModuleEditor::ModuleEditor(Application* app, bool start_enabled) : Module(app, start_enabled)
 {
 }
@@ -208,12 +209,12 @@ void ModuleEditor::DrawConsole()
 {
 	ImGui::Begin("Console", &showConsole);
 
-	//ImGui::Text(outputLog.data());
-
 	if (ImGui::Button("Clean Log")) 
 	{
 		//cleanLog = true;
 	}
+
+	ImGui::TextUnformatted(outputLog.data());
 
 	ImGui::End();
 }

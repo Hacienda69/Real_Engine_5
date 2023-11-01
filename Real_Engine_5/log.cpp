@@ -1,6 +1,9 @@
 #pragma once
 #include "Globals.h"
 
+std::string outputLog;
+//bool cleanLog;
+
 void log(const char file[], int line, const char* format, ...)
 {
 	static char tmp_string[4096];
@@ -13,4 +16,9 @@ void log(const char file[], int line, const char* format, ...)
 	va_end(ap);
 	sprintf_s(tmp_string2, 4096, "\n%s(%d) : %s", file, line, tmp_string);
 	OutputDebugString(tmp_string2);
+
+	for (int i = 0; tmp_string[i] != NULL; i++) {
+		outputLog.push_back(tmp_string[i]);
+	}
+	outputLog.push_back('\n');
 }
