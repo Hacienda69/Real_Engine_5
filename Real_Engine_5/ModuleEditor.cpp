@@ -211,10 +211,16 @@ void ModuleEditor::DrawConsole()
 
 	if (ImGui::Button("Clean Log")) 
 	{
-		//cleanLog = true;
+		outputLog.clear();
+		cleanLog = true;
 	}
 
-	ImGui::TextUnformatted(outputLog.data());
+	if (!cleanLog) ImGui::Text(outputLog.data());
+	else
+	{
+		ImGui::Text(" ");
+		cleanLog = false;
+	}
 
 	ImGui::End();
 }

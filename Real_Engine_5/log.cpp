@@ -2,7 +2,6 @@
 #include "Globals.h"
 
 std::string outputLog;
-//bool cleanLog;
 
 void log(const char file[], int line, const char* format, ...)
 {

@@ -30,7 +30,7 @@ public:
 	std::vector<float> fps_Log;
 	std::vector<float> ms_Log;
 
-	//std::string outputLog;
+	bool cleanLog = false;
 
 private:
 	bool showDemo = false;

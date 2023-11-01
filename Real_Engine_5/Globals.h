@@ -27,7 +27,11 @@ enum update_status
 	UPDATE_ERROR
 };
 
-// Configuration -----------
+// Console --------------------------------------
+extern std::string outputLog;
+extern bool cleanLog;
+
+// Configuration --------------------------------
 #define SCREEN_WIDTH 1280
 #define SCREEN_HEIGHT 1024
 #define SCREEN_SIZE 1
@@ -37,6 +41,3 @@ enum update_status
 #define WIN_FULLSCREEN_DESKTOP false
 #define VSYNC true
 #define TITLE "Real_Engine_5"
-
-extern std::string outputLog;
-//extern bool cleanLog;
