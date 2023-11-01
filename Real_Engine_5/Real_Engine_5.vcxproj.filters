@@ -61,6 +61,9 @@
     <Filter Include="Externals\PhysFS">
       <UniqueIdentifier>{df186297-231c-4436-9b24-1584edc69c51}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Externals\mmgr">
+      <UniqueIdentifier>{3e3b85fc-068b-42e6-a577-4db0ae013c20}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Module.h">
@@ -697,6 +700,12 @@
     <ClInclude Include="PhysFS\include\physfs.h">
       <Filter>Externals\PhysFS</Filter>
     </ClInclude>
+    <ClInclude Include="mmgr.h">
+      <Filter>Externals\mmgr</Filter>
+    </ClInclude>
+    <ClInclude Include="nommgr.h">
+      <Filter>Externals\mmgr</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="ModuleCamera3D.cpp">
@@ -862,6 +871,9 @@
       <Filter>Sources\Helpers</Filter>
     </ClCompile>
     <ClCompile Include="parson-master\parson-master\parson.c" />
+    <ClCompile Include="mmgr.cpp">
+      <Filter>Externals\mmgr</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="MathGeoLib\include\Geometry\KDTree.inl">
