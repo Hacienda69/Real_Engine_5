@@ -6,6 +6,7 @@
 #include "backends/imgui_impl_opengl3.h"
 #include "backends/imgui_impl_sdl2.h"
 
+#include "Assimp/include/version.h"
 
 ModuleEditor::ModuleEditor(Application* app, bool start_enabled) : Module(app, start_enabled)
 {
@@ -100,7 +101,7 @@ void ModuleEditor::DrawEditor()
 				ImGui::Text("a new cutting - edge video game engine in the thriving virtual");
 				ImGui::Text("entertainment industry, we hope you enjoy it.");
 
-				ImGui::Text(" ");
+				ImGui::NewLine();
 				
 				ImGui::SeparatorText("ABOUT THE AUTHORS:");
 				ImGui::BulletText("Marc Escandell Alonso");
@@ -108,31 +109,62 @@ void ModuleEditor::DrawEditor()
 				if (ImGui::MenuItem("	Marc's Github: https://github.com/MrMonkey420"))
 						ShellExecute(NULL, "OPEN", "https://github.com/MrMonkey420", NULL, NULL, SW_SHOW);
 
-				ImGui::Text(" ");
+				ImGui::NewLine();
 
 				ImGui::BulletText("Daniel Manas Calvo");
 
 				if (ImGui::MenuItem("	Dani's Github: https://github.com/Hacienda69"))
 					ShellExecute(NULL, "OPEN", "https://github.com/Hacienda69", NULL, NULL, SW_SHOW);
 
-				ImGui::Text(" ");
+				ImGui::NewLine();
 
 				ImGui::SeparatorText("3RD PARTY LIBRARIES USED:");
-				ImGui::Text("con las versiones y links a sus webs");
 
-				ImGui::Text(" ");
+				ImGui::BulletText("SDL 2.0.4");
+				if (ImGui::MenuItem("	SDL: https://www.libsdl.org/"))
+					ShellExecute(NULL, "OPEN", "https://www.libsdl.org/", NULL, NULL, SW_SHOW);
+
+				ImGui::BulletText("ImGui 1.90 WIP");
+				if (ImGui::MenuItem("	ImGui: https://github.com/ocornut/imgui/tree/docking"))
+					ShellExecute(NULL, "OPEN", "https://github.com/ocornut/imgui/tree/docking", NULL, NULL, SW_SHOW);
+
+				ImGui::BulletText("Glew 2.1.0");
+				if (ImGui::MenuItem("	Glew: https://glew.sourceforge.net/"))
+					ShellExecute(NULL, "OPEN", "https://glew.sourceforge.net/", NULL, NULL, SW_SHOW);
+
+				ImGui::BulletText("MathGeoLib 1.0");
+				if (ImGui::MenuItem("	MathGeoLib: https://github.com/juj/MathGeoLib"))
+					ShellExecute(NULL, "OPEN", "https://github.com/juj/MathGeoLib", NULL, NULL, SW_SHOW);
+
+				ImGui::BulletText("OpenGL %s", glGetString(GL_VERSION));
+				if (ImGui::MenuItem("	OpenGL: https://www.opengl.org/"))
+					ShellExecute(NULL, "OPEN", "https://www.opengl.org/", NULL, NULL, SW_SHOW);
+
+				ImGui::BulletText("Assimp %d.%d.%d", aiGetVersionMajor(), aiGetVersionMinor(), aiGetVersionRevision());
+				if (ImGui::MenuItem("	Assimp: https://assimp.org/"))
+					ShellExecute(NULL, "OPEN", "https://assimp.org/", NULL, NULL, SW_SHOW);
+
+				ImGui::BulletText("PhysFS 3.0.2");
+				if (ImGui::MenuItem("	PhysFS: https://icculus.org/physfs/"))
+					ShellExecute(NULL, "OPEN", "https://icculus.org/physfs/", NULL, NULL, SW_SHOW);
+
+				ImGui::BulletText("DevIL 1.8.0");
+				if (ImGui::MenuItem("	DevIL: https://github.com/DentonW/DevIL"))
+					ShellExecute(NULL, "OPEN", "https://github.com/DentonW/DevIL", NULL, NULL, SW_SHOW);
+
+				ImGui::NewLine();
 
 				ImGui::SeparatorText("lICENSE");
 
-				ImGui::Text(" ");
+				ImGui::NewLine();
 
 				ImGui::Text("MIT License");
 
-				ImGui::Text(" ");
+				ImGui::NewLine();
 
 				ImGui::Text("Copyright(c) 2023 Hacienda69");
 
-				ImGui::Text(" ");
+				ImGui::NewLine();
 
 				ImGui::Text("Permission is hereby granted, free of charge, to any person obtaining a copy");
 				ImGui::Text("of this software and associated documentation files(the 'Software'), to deal");
@@ -141,12 +173,12 @@ void ModuleEditor::DrawEditor()
 				ImGui::Text("copies of the Software, and to permit persons to whom the Software is");
 				ImGui::Text("furnished to do so, subject to the following conditions :");
 
-				ImGui::Text(" ");
+				ImGui::NewLine();
 
 				ImGui::Text("The above copyright notice and this permission notice shall be included in");
 				ImGui::Text("all copies or substantial portions of the Software.");
 
-				ImGui::Text(" ");
+				ImGui::NewLine();
 
 				ImGui::Text("THE SOFTWARE IS PROVIDED 'AS IS', WITHOUT WARRANTY OF ANY KIND, EXPRESS OR");
 				ImGui::Text("IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,");
