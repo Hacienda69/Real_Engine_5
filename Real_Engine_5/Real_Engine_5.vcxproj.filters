@@ -64,6 +64,9 @@
     <Filter Include="Externals\mmgr">
       <UniqueIdentifier>{3e3b85fc-068b-42e6-a577-4db0ae013c20}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Sources\Components">
+      <UniqueIdentifier>{5d61420d-ebca-433f-9873-2c245e4f0a47}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Module.h">
@@ -706,6 +709,9 @@
     <ClInclude Include="nommgr.h">
       <Filter>Externals\mmgr</Filter>
     </ClInclude>
+    <ClInclude Include="ComponentMesh.h">
+      <Filter>Sources\Components</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="ModuleCamera3D.cpp">
@@ -873,6 +879,9 @@
     <ClCompile Include="parson-master\parson-master\parson.c" />
     <ClCompile Include="mmgr.cpp">
       <Filter>Externals\mmgr</Filter>
+    </ClCompile>
+    <ClCompile Include="ComponentMesh.cpp">
+      <Filter>Sources\Components</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

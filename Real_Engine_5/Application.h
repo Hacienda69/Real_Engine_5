@@ -9,6 +9,10 @@
 #include "ModuleInput.h"
 #include "ModuleRenderer3D.h"
 #include "ModuleWindow.h"
+
+#include "ComponentMesh.h"
+
+
 #include <vector>
 
 class Module;
@@ -18,6 +22,8 @@ class ModuleRenderer3D;
 class ModuleCamera3D;
 class ModuleEditor;
 
+class ComponentMesh;
+
 class Application
 {
 public:
@@ -26,6 +32,8 @@ public:
 	ModuleRenderer3D* renderer3D;
 	ModuleCamera3D* camera;
 	ModuleEditor* editor;
+
+	ComponentMesh* mesh;
 
 	float targetFPS = 60;
 

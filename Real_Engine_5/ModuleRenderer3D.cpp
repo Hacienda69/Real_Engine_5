@@ -4,7 +4,7 @@
 #include "SDL\include\SDL_opengl.h"
 #include <gl/GL.h>
 #include <gl/GLU.h>
-
+#include "ComponentMesh.h"
 #include "imgui.h" // including imgui.h 21/09/23
 #include "backends/imgui_impl_sdl2.h"
 #include "backends/imgui_impl_opengl3.h"
@@ -225,6 +225,8 @@ update_status ModuleRenderer3D::PostUpdate(float dt)
 	//glBindVertexArray(VAO);
 	////glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, EBO);
 	glDrawElements(GL_TRIANGLES, 36, GL_UNSIGNED_INT, NULL);
+
+	App->mesh->DrawMesh();
 
 	App->editor->DrawEditor();
 
