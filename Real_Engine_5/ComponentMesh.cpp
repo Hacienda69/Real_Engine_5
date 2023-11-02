@@ -52,47 +52,13 @@ update_status ComponentMesh::PostUpdate(float dt)
 }
 
 // ---------------------------------------------------------------------------
-<<<<<<< Updated upstream
-void ComponentMesh::LoadFile(const std::string Path)
-=======
 GameObject* ComponentMesh::LoadFile(std::string Path)
->>>>>>> Stashed changes
 {
 	const aiScene* scene = aiImportFile(Path.c_str(), aiProcessPreset_TargetRealtime_MaxQuality);
 	if (scene != nullptr && scene->HasMeshes())
 	{
-<<<<<<< Updated upstream
-		for (int i = 0; i < scene->mNumMeshes; i++)
-		{
-			Mesh* mesh = new Mesh();
-
-			mesh->numVertex = scene->mMeshes[i]->mNumVertices;
-			mesh->vertex = new float[mesh->numVertex * 3];
-			
-			memcpy(mesh->vertex, scene->mMeshes[i]->mVertices, sizeof(float) * mesh->numVertex * 3);
-
-			if (scene->mMeshes[i]->HasFaces())
-			{
-				mesh->numIndex = scene->mMeshes[i]->mNumFaces * 3;
-				mesh->index = new uint[mesh->numIndex];
-				for (uint j = 0; j < scene->mMeshes[i]->mNumFaces; j++)
-				{
-					if (scene->mMeshes[i]->mFaces[j].mNumIndices != 3) {
-						LOG("WARNING, geometry face with != 3 index!");
-					}
-					else
-						memcpy(&mesh->index[j * 3], scene->mMeshes[i]->mFaces[j].mIndices, 3 * sizeof(uint));
-
-				}
-				meshes.push_back(mesh);
-			}
-			else
-				delete mesh;
-		}
-=======
 		GameObject* finalObj = ProcessNode(scene, scene->mRootNode, App->hierarchy->roots, Path);
 
->>>>>>> Stashed changes
 		aiReleaseImport(scene);
 
 		return finalObj;

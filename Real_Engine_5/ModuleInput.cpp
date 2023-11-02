@@ -118,11 +118,7 @@ update_status ModuleInput::PreUpdate(float dt)
 
 			case SDL_DROPFILE:
 			{
-<<<<<<< Updated upstream
-				InportFile(e.drop.file);
-=======
 					CheckFileExtension(e.drop.file);
->>>>>>> Stashed changes
 			}
 		}
 	}

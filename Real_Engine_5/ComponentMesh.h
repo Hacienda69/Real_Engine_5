@@ -45,13 +45,8 @@ public:
 	update_status PreUpdate(float dt);
 	update_status Update(float dt);
 	update_status PostUpdate(float dt);
-<<<<<<< Updated upstream
-
-	void LoadFile(const std::string Path);
-=======
 	GameObject* LoadFile(string Path);
 	void BufferMesh(Mesh* mesh);
->>>>>>> Stashed changes
 	void DrawMesh();
 
 	bool CleanUp();
