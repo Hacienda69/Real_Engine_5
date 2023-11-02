@@ -116,26 +116,11 @@ GameObject* ProcessNode(const aiScene* scene, aiNode* node, GameObject* parent, 
 	gObj->name = node->mName.C_Str();
 
 
-	aiMatrix4x4 TransformMat = node->mTransformation;
-
-	aiVector3D scale, position, rotation;
-	aiQuaternion QuatRotation;
-
-	TransformMat.Decompose(scale, QuatRotation, position);
-	rotation = QuatRotation.GetEuler();
-
-	gObj->transform->scale = float3(scale.x, scale.y, scale.z);
-	gObj->transform->position = float3(position.x, position.y, position.z);
-	gObj->transform->rotation = float3(rotation.x * RADTODEG, rotation.y * RADTODEG, rotation.z * RADTODEG);
-	gObj->transform->SetTransformMatrix();
-
 	if (node->mNumMeshes != 0) {
 
 		CMesh* component = new CMesh(gObj);
 
-
 		string texture_path = "";
-
 
 		for (int i = 0; i < node->mNumMeshes; i++)
 		{
@@ -146,7 +131,7 @@ GameObject* ProcessNode(const aiScene* scene, aiNode* node, GameObject* parent, 
 				continue;
 			}
 
-			mesh->Owner = gObj;
+			mesh->Parent = gObj;
 			component->meshes.push_back(mesh);
 
 			if (texture_path == "") texture_path = ImportTexture(scene, node->mMeshes[i], Path);
@@ -154,7 +139,7 @@ GameObject* ProcessNode(const aiScene* scene, aiNode* node, GameObject* parent, 
 		}
 
 		gObj->components.push_back(component);
-		gObj->fixed = true;
+		gObj->status = true;
 
 
 

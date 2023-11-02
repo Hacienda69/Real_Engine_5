@@ -12,7 +12,7 @@ enum class componentType
 class Component
 {
 public:
-	Component::Component(GameObject* owner)
+	Component(GameObject* owner)
 	{
 		type = componentType::NONE;
 		active = true;

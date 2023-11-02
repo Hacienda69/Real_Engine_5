@@ -2,6 +2,7 @@
 #include "Application.h"
 #include "ModuleWindow.h"
 #include "ModuleRenderer3D.h"
+#include "ModuleHierarchy.h"
 #include "imgui.h"
 #include "backends/imgui_impl_opengl3.h"
 #include "backends/imgui_impl_sdl2.h"
@@ -327,11 +328,11 @@ void ModuleEditor::DrawConfiguration()
 
 }
 
-
 void ModuleEditor::DrawHierarchy() 
 {
 	ImGui::Begin("Hierarchy", &showHierarchy);
 
+	App->hierarchy->DrawTree(App->hierarchy->root);
 
 	ImGui::End();
 }
