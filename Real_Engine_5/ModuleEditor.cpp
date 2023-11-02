@@ -187,27 +187,57 @@ void ModuleEditor::DrawConfiguration()
 
 	if(ImGui::CollapsingHeader("Application"))
 	{
+		static char s1[128] = "Real Engine 5";
+		ImGui::InputText("Engine Name", s1, IM_ARRAYSIZE(s1));
+		static char s2[128] = "CITM UPC";
+		ImGui::InputText("Organization", s2, IM_ARRAYSIZE(s2));
+
 		int auxFPS = App->targetFPS;
 		if (ImGui::SliderInt("Max FPS", &auxFPS, 1, 120))
 			App->targetFPS = auxFPS;
 
-		AddFPS(1000 / App->GetDt());
-		AddMS(App->GetDt() * 1000);
+		AddFPS(1 / App->GetDt());
+		AddMS(1000 * App->GetDt());
 
 		char title[25];
 		sprintf_s(title, 25, "FrameRate %0.1f", fps_Log[fps_Log.size() - 1]);
-		ImGui::PlotHistogram("##FPS Log", &fps_Log[0], fps_Log.size(), 0, title, 0.0f, 50.0f, ImVec2(0.0f, 50.0f));
+		ImGui::PlotHistogram("##FPS Log", &fps_Log[0], fps_Log.size(), 0, title, 0.0f, 120.0f, ImVec2(300, 100));
 		
 		sprintf_s(title, 25, "Milliseconds %0.1f", ms_Log[ms_Log.size() - 1]);
-		ImGui::PlotHistogram("##FPS Log", &ms_Log[0], ms_Log.size(), 0, title, 0.0f, 50.0f, ImVec2(0.0f, 50.0f));
+		ImGui::PlotHistogram("##FPS Log", &ms_Log[0], ms_Log.size(), 0, title, 0.0f, 50.0f, ImVec2(300, 100));
 		
 	}
 	if(ImGui::CollapsingHeader("Window"))
 	{
-		if(ImGui::Checkbox("Fullscreen", &fullscreen)) {}
-		if(ImGui::Checkbox("Resizable", &resizable)) {}
-		if(ImGui::Checkbox("Borderless", &borderless)) {}
-		if(ImGui::Checkbox("full_desktop", &full_desktop)) {} 
+		if (ImGui::Button("Reset Screen Size")) 
+		{ 
+			App->window->ScreenWidth = SCREEN_WIDTH * SCREEN_SIZE; 
+			App->window->ScreenHeight = SCREEN_HEIGHT * SCREEN_SIZE;
+			App->window->SetWindowSize(); 
+		}
+
+		ImGui::Checkbox("Keep Screen Proportions", &App->window->keepScreenProportions);
+
+		int new_Width = App->window->ScreenWidth;
+		if (ImGui::SliderInt("Screen Width", &new_Width, 64, 3080)) 
+		{
+			App->window->ScreenWidth = new_Width;
+			App->window->SetWindowSize();
+		}
+		int new_Height = App->window->ScreenHeight;
+		if (ImGui::SliderInt("Screen Height", &new_Height, 64, 2160)) 
+		{
+			App->window->ScreenHeight = new_Height;
+			App->window->SetWindowSize();
+		}
+
+		if (ImGui::BeginTable("split", 2)) {
+			ImGui::TableNextColumn(); if (ImGui::Checkbox("Fullscreen",   &App->window->win_FullScreen))  { LOG("Fullscreen Toggled");   App->window->ToggleFullscreen();  }
+			ImGui::TableNextColumn(); if (ImGui::Checkbox("Resizable",    &App->window->win_Resizable))   { LOG("Resizable Toggled");    App->window->ToggleResizable();   }
+			ImGui::TableNextColumn(); if (ImGui::Checkbox("Borderless",	  &App->window->win_Borderless))  { LOG("Borderless Toggled");   App->window->ToggleBorderless();  }
+			ImGui::TableNextColumn(); if (ImGui::Checkbox("full_desktop", &App->window->win_FullDesktop)) { LOG("Full Desktop Toggled"); App->window->ToggleFullDesktop(); }
+			ImGui::EndTable();
+		}
 	}
 	if(ImGui::CollapsingHeader("Input"))
 	{
@@ -219,6 +249,7 @@ void ModuleEditor::DrawConfiguration()
 	}
 
 	ImGui::End();
+
 }
 
 

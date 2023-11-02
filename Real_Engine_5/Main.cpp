@@ -80,6 +80,9 @@ int main(int argc, char ** argv)
 			break;
 
 		}
+
+		//Dont know where to put this yet
+		//App->dt = (1 / App->targetFPS);
 	}
 
 	delete App;

@@ -20,12 +20,31 @@ public:
 
 	void SetTitle(const char* title);
 
+	void ToggleFullscreen();
+	void ToggleBorderless();
+	void ToggleResizable();
+	void ToggleFullDesktop();
+	void SetWindowSize();
+
 public:
 	//The window we'll be rendering to
 	SDL_Window* window;
 
 	//The surface contained by the window
 	SDL_Surface* screen_surface;
+
+
+	bool win_FullScreen = false;
+	bool win_Resizable = true;
+	bool win_Borderless = false;
+	bool win_FullDesktop = false;
+
+	bool keepScreenProportions = true;
+
+	int ScreenWidth;
+	int ScreenHeight;
+	float defScreenProportion;
+
 };
 
 #endif // __ModuleWindow_H__

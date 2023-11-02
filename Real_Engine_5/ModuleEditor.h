@@ -40,12 +40,6 @@ private:
 	bool showConfig = false;
 	bool showConsole = false;
 	bool showHierarchy = false;
-
-	bool fullscreen = false;
-	bool resizable = false;
-	bool borderless = false;
-	bool full_desktop = false;
-
 };
 
 #endif //MODULE_EDITOR

@@ -62,6 +62,9 @@ void Application::PrepareUpdate()
 // ---------------------------------------------
 void Application::FinishUpdate()
 {
+	Uint32 frameMS = ms_timer.Read();
+	float aux = (1000.f / (float)targetFPS) - (float)frameMS;
+	SDL_Delay(static_cast<Uint32>(fabs(aux)));
 }
 
 // Call PreUpdate, Update and PostUpdate on all modules
