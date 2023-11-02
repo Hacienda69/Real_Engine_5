@@ -118,13 +118,7 @@ update_status ModuleInput::PreUpdate(float dt)
 
 			case SDL_DROPFILE:
 			{
-				std::string fileName = e.drop.file;
-				if (fileName.substr(fileName.find_last_of(".") + 1) == "fbx")
-				{
-					App->mesh->LoadFile(e.drop.file);
-				}
-				else
-					break;
+				InportFile(e.drop.file);
 			}
 		}
 	}
@@ -141,4 +135,21 @@ bool ModuleInput::CleanUp()
 	LOG("Quitting SDL input event subsystem");
 	SDL_QuitSubSystem(SDL_INIT_EVENTS);
 	return true;
+}
+
+// Other Functions ----------------------------------------------
+void ModuleInput::InportFile(std::string path)
+{
+	std::string type = path.substr(path.find_last_of(".") + 1);
+	if (type == "fbx" || type == "FBX")
+	{
+		LOG("Loading FBX");
+		App->mesh->LoadFile(path);
+	}
+	else if (type == "png" || type == "PNG")
+	{
+		LOG("Loading Textures");
+	}
+	else LOG("File didn't match filter");
+
 }

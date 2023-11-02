@@ -35,10 +35,10 @@ public:
 	bool cleanLog = false;
 
 private:
-	bool showDemo = false;
+	bool showDemo =		 false;
 	bool showInspector = false;
-	bool showConfig = false;
-	bool showConsole = false;
+	bool showConfig =	 true;
+	bool showConsole =	 true;
 	bool showHierarchy = false;
 };
 

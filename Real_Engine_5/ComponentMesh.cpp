@@ -51,13 +51,11 @@ update_status ComponentMesh::PostUpdate(float dt)
 }
 
 // ---------------------------------------------------------------------------
-void ComponentMesh::LoadFile(std::string Path)
+void ComponentMesh::LoadFile(const std::string Path)
 {
 	const aiScene* scene = aiImportFile(Path.c_str(), aiProcessPreset_TargetRealtime_MaxQuality);
 	if (scene != nullptr && scene->HasMeshes())
 	{
-		// Use scene->mNumMeshes to iterate on scene->mMeshes array
-
 		for (int i = 0; i < scene->mNumMeshes; i++)
 		{
 			Mesh* mesh = new Mesh();

@@ -40,7 +40,7 @@ public:
 	update_status Update(float dt);
 	update_status PostUpdate(float dt);
 
-	void LoadFile(string Path);
+	void LoadFile(const std::string Path);
 	void DrawMesh();
 
 	bool CleanUp();

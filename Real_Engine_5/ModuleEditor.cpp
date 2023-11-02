@@ -64,7 +64,7 @@ void ModuleEditor::DrawEditor()
 		{
 			ImGui::EndMenu();
 		}
-		if (ImGui::BeginMenu("Objects"))
+		if (ImGui::BeginMenu("GameObject"))
 		{
 			ImGui::Text("Hello world!");
 			ImGui::EndMenu();
@@ -278,21 +278,10 @@ void ModuleEditor::DrawConfiguration()
 		ImGuiIO io = ImGui::GetIO();
 
 		ImGui::Text("Mouse Position:"); ImGui::SameLine();
-		ImGui::TextColored(ImVec4(1.0f, 0.0f, 1.0f, 1.0f), "%g, %g", io.MousePos.x, io.MousePos.y);
+		ImGui::TextColored(ImVec4(0.0f, 1.0f, 1.0f, 1.0f), "%g, %g", io.MousePos.x, io.MousePos.y);
 		ImGui::Text("Mouse Delta:"); ImGui::SameLine();
-		ImGui::TextColored(ImVec4(1.0f, 0.0f, 1.0f, 1.0f), "%g, %g", io.MouseDelta.x, io.MouseDelta.y);
+		ImGui::TextColored(ImVec4(0.0f, 1.0f, 1.0f, 1.0f), "%g, %g", io.MouseDelta.x, io.MouseDelta.y);
 		ImGui::Text("Mouse Wheel:", io.MouseWheel);
-		ImGui::Text("Mouse Button:"); 
-
-		int count = IM_ARRAYSIZE(io.MouseDown);
-		for (int i = 0; i < count; i++) 
-		{
-			if (ImGui::IsMouseDown(i)) 
-			{ 
-				ImGui::SameLine(); 
-				ImGui::TextColored(ImVec4(1.0f, 0.0f, 1.0f, 1.0f), "b%d (%.02f secs)", i, io.MouseDownDuration[i]); 
-			}
-		}
 
 		struct funcs { static bool IsLegacyNativeDupe(ImGuiKey key) { return key < 512 && ImGui::GetIO().KeyMap[key] != -1; } }; // Hide Native<>ImGuiKey duplicates when both exists in the array
 		ImGuiKey start_key = (ImGuiKey)0;
@@ -301,7 +290,7 @@ void ModuleEditor::DrawConfiguration()
 		for (ImGuiKey key = start_key; key < ImGuiKey_NamedKey_END; key = (ImGuiKey)(key + 1)) 
 		{ 
 			if (funcs::IsLegacyNativeDupe(key) || !ImGui::IsKeyDown(key)) continue; ImGui::SameLine(); 
-			ImGui::Text((key < ImGuiKey_NamedKey_BEGIN) ? "\"%s\"" : "\"%s\" %d", ImGui::GetKeyName(key), key); 
+			ImGui::TextColored(ImVec4(0.0f, 1.0f, 1.0f, 1.0f), (key < ImGuiKey_NamedKey_BEGIN) ? "\"%s\"" : "\"%s\" %d", ImGui::GetKeyName(key), key); 
 		}
 	}
 	if(ImGui::CollapsingHeader("Hardware"))
