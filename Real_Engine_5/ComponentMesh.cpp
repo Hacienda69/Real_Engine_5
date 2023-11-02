@@ -98,10 +98,6 @@ void Mesh::DrawMesh()
 
 	glPushMatrix();
 
-	if (Parent != nullptr) {
-		glMultMatrixf(Parent->transform->GetTransformMatrix().ptr());
-	}
-
 	glDrawElements(GL_TRIANGLES, numIndex, GL_UNSIGNED_INT, NULL);
 
 	glPopMatrix();

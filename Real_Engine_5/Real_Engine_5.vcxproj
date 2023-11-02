@@ -118,6 +118,7 @@
     <ClInclude Include="Assimp\Assimp\include\vector3.h" />
     <ClInclude Include="Assimp\Assimp\include\version.h" />
     <ClInclude Include="Color.h" />
+    <ClInclude Include="Component.h" />
     <ClInclude Include="ComponentMesh.h" />
     <ClInclude Include="ComponentTexture.h" />
     <ClInclude Include="DevIL\include\devil_cpp_wrapper.hpp" />
@@ -128,6 +129,7 @@
     <ClInclude Include="DevIL\include\ilut_config.h" />
     <ClInclude Include="DevIL\include\ilu_region.h" />
     <ClInclude Include="DevIL\include\il_wrap.h" />
+    <ClInclude Include="GameObject.h" />
     <ClInclude Include="Glew\include\eglew.h" />
     <ClInclude Include="Glew\include\glew.h" />
     <ClInclude Include="Glew\include\glxew.h" />
@@ -305,6 +307,7 @@
     <ClCompile Include="Color.cpp" />
     <ClCompile Include="ComponentMesh.cpp" />
     <ClCompile Include="ComponentTexture.cpp" />
+    <ClCompile Include="GameObject.cpp" />
     <ClCompile Include="glmath.cpp" />
     <ClCompile Include="imgui-docking\backends\imgui_impl_opengl3.cpp" />
     <ClCompile Include="imgui-docking\backends\imgui_impl_sdl2.cpp" />
