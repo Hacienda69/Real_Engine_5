@@ -19,8 +19,10 @@ public:
 	bool CleanUp() override;
 
 	void DrawEditor();
+	void DrawInspector();
 	void DrawConfiguration();
 	void DrawConsole();
+	void DrawHierarchy();
 
 	void AddFPS(const float aFPS);
 	void AddMS(const float aMS);
@@ -34,8 +36,10 @@ public:
 
 private:
 	bool showDemo = false;
+	bool showInspector = false;
 	bool showConfig = false;
 	bool showConsole = false;
+	bool showHierarchy = false;
 
 	bool fullscreen = false;
 	bool resizable = false;

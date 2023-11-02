@@ -74,6 +74,12 @@ void ModuleEditor::DrawEditor()
 			if (ImGui::Button("Toggle Config"))
 				showConfig = !showConfig;
 
+			if (ImGui::Button("Toggle Inspector"))
+				showInspector = !showInspector;
+
+			if (ImGui::Button("Toggle Hierachy"))
+				showHierarchy = !showHierarchy;
+
 			if (ImGui::Button("Toggle Console"))
 				showConsole = !showConsole;
 
@@ -155,12 +161,22 @@ void ModuleEditor::DrawEditor()
 		ImGui::EndMainMenuBar();
 	}
 
-	if (showConfig) DrawConfiguration();
-	if (showConsole) DrawConsole();
-	if(showDemo) ImGui::ShowDemoWindow();
+	if (showConfig)		 DrawConfiguration();
+	if (showInspector)	 DrawInspector();
+	if (showConsole)	 DrawConsole();
+	if (showHierarchy)	 DrawHierarchy();
+	if (showDemo) ImGui::ShowDemoWindow();
 
 	ImGui::Render();
 	ImGui_ImplOpenGL3_RenderDrawData(ImGui::GetDrawData());
+}
+
+void ModuleEditor::DrawInspector()
+{
+	ImGui::Begin("Inspector", &showInspector);
+
+
+	ImGui::End();
 }
 
 void ModuleEditor::DrawConfiguration() 
@@ -201,6 +217,15 @@ void ModuleEditor::DrawConfiguration()
 	{
 
 	}
+
+	ImGui::End();
+}
+
+
+void ModuleEditor::DrawHierarchy() 
+{
+	ImGui::Begin("Hierarchy", &showHierarchy);
+
 
 	ImGui::End();
 }
