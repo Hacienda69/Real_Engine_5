@@ -34,30 +34,12 @@ bool ComponentMesh::Init()
 }
 
 // ---------------------------------------------------------------------------
-update_status ComponentMesh::PreUpdate(float dt)
-{
-	return UPDATE_CONTINUE;
-}
-
-// ---------------------------------------------------------------------------
-update_status ComponentMesh::Update(float dt)
-{
-	return UPDATE_CONTINUE;
-}
-
-// ---------------------------------------------------------------------------
-update_status ComponentMesh::PostUpdate(float dt)
-{
-	return UPDATE_CONTINUE;
-}
-
-// ---------------------------------------------------------------------------
 GameObject* ComponentMesh::LoadFile(std::string Path)
 {
 	const aiScene* scene = aiImportFile(Path.c_str(), aiProcessPreset_TargetRealtime_MaxQuality);
 	if (scene != nullptr && scene->HasMeshes())
 	{
-		GameObject* finalObj = ProcessNode(scene, scene->mRootNode, App->hierarchy->roots, Path);
+		GameObject* finalObj = ProcessNode(scene, scene->mRootNode, App->hierarchy->root, Path);
 
 		aiReleaseImport(scene);
 
@@ -98,13 +80,10 @@ void Mesh::DrawMesh()
 
 	glPushMatrix();
 
-<<<<<<< Updated upstream
-=======
 	if (Parent != nullptr) {
 		//glMultMatrixf(Parent->transform->GetTransformMatrix().ptr());
 	}
 
->>>>>>> Stashed changes
 	glDrawElements(GL_TRIANGLES, numIndex, GL_UNSIGNED_INT, NULL);
 
 	glPopMatrix();

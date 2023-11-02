@@ -8,6 +8,7 @@
 #include "ModuleEditor.h"
 #include "ModuleInput.h"
 #include "ModuleRenderer3D.h"
+#include "ModuleHierarchy.h"
 #include "ModuleWindow.h"
 
 #include "ComponentMesh.h"
@@ -20,6 +21,7 @@ class ModuleWindow;
 class ModuleInput;
 class ModuleRenderer3D;
 class ModuleCamera3D;
+class ModuleHierarchy;
 class ModuleEditor;
 
 class ComponentMesh;
@@ -32,6 +34,7 @@ public:
 	ModuleInput* input;
 	ModuleRenderer3D* renderer3D;
 	ModuleCamera3D* camera;
+	ModuleHierarchy* hierarchy;
 	ModuleEditor* editor;
 
 	ComponentMesh* mesh;

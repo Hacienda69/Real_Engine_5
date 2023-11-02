@@ -4,7 +4,7 @@
 
 #include "Module.h"
 #include "Globals.h"
-//#include "ModuleGameObject.h"
+#include "GameObject.h"
 
 class ModuleHierarchy : public Module 
 {
@@ -17,8 +17,12 @@ public:
 	update_status Update(float dt);
 	bool CleanUp();
 
-private:
+	void DrawTree(GameObject* go);
 
+	GameObject* selected;
+	GameObject* root;
+
+private:
 };
 
 #endif // 

@@ -6,6 +6,7 @@ Application::Application()
 	input = new ModuleInput(this);
 	renderer3D = new ModuleRenderer3D(this);
 	camera = new ModuleCamera3D(this);
+	hierarchy = new ModuleHierarchy(this);
 
 	mesh = new ComponentMesh(this);
 	tex = new ComponentTexture(this);
@@ -21,6 +22,7 @@ Application::Application()
 	AddModule(camera);
 	AddModule(input);
 
+	AddModule(hierarchy);
 	AddModule(mesh);
 	AddModule(tex);
 
