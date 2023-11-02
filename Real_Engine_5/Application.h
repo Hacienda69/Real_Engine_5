@@ -11,7 +11,7 @@
 #include "ModuleWindow.h"
 
 #include "ComponentMesh.h"
-
+#include "ComponentTexture.h"
 
 #include <vector>
 
@@ -23,6 +23,7 @@ class ModuleCamera3D;
 class ModuleEditor;
 
 class ComponentMesh;
+class ComponentTexture;
 
 class Application
 {
@@ -34,6 +35,7 @@ public:
 	ModuleEditor* editor;
 
 	ComponentMesh* mesh;
+	ComponentTexture* tex;
 
 	float targetFPS = 60;
 

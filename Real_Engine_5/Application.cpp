@@ -8,6 +8,7 @@ Application::Application()
 	camera = new ModuleCamera3D(this);
 
 	mesh = new ComponentMesh(this);
+	tex = new ComponentTexture(this);
 
 	editor = new ModuleEditor(this);
 
@@ -21,6 +22,7 @@ Application::Application()
 	AddModule(input);
 
 	AddModule(mesh);
+	AddModule(tex);
 
 	// Renderer last!
 	AddModule(renderer3D);

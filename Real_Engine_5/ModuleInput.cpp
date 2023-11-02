@@ -118,7 +118,11 @@ update_status ModuleInput::PreUpdate(float dt)
 
 			case SDL_DROPFILE:
 			{
+<<<<<<< Updated upstream
 				InportFile(e.drop.file);
+=======
+					CheckFileExtension(e.drop.file);
+>>>>>>> Stashed changes
 			}
 		}
 	}
@@ -129,7 +133,23 @@ update_status ModuleInput::PreUpdate(float dt)
 	return UPDATE_CONTINUE;
 }
 
-// Called before quitting
+void ModuleInput::CheckFileExtension(std::string fileName)
+{
+	std::string extension = fileName.substr(fileName.find_last_of(".") + 1);
+	if (extension == "fbx")
+	{
+		App->mesh->LoadFile(fileName);
+	}
+	if (extension == "png" || extension == "dds")
+	{
+		App->tex->LoadTexture(fileName);
+	}
+	else
+	{
+		LOG("Error: this file extension not supported")
+	}
+}
+
 bool ModuleInput::CleanUp()
 {
 	LOG("Quitting SDL input event subsystem");
