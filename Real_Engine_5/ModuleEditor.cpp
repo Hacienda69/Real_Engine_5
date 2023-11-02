@@ -238,6 +238,8 @@ void ModuleEditor::DrawConfiguration()
 		sprintf_s(title, 25, "Milliseconds %0.1f", ms_Log[ms_Log.size() - 1]);
 		ImGui::PlotHistogram("##FPS Log", &ms_Log[0], ms_Log.size(), 0, title, 0.0f, 50.0f, ImVec2(300, 100));
 		
+		ImGui::Text("Application average %.3f ms/frame (%.1f FPS)", 1000.0 / ImGui::GetIO().Framerate, ImGui::GetIO().Framerate);
+
 	}
 	if(ImGui::CollapsingHeader("Window"))
 	{
@@ -271,9 +273,36 @@ void ModuleEditor::DrawConfiguration()
 			ImGui::EndTable();
 		}
 	}
-	if(ImGui::CollapsingHeader("Input"))
+	if(ImGui::CollapsingHeader("Inputs"))
 	{
-		
+		ImGuiIO io = ImGui::GetIO();
+
+		ImGui::Text("Mouse Position:"); ImGui::SameLine();
+		ImGui::TextColored(ImVec4(1.0f, 0.0f, 1.0f, 1.0f), "%g, %g", io.MousePos.x, io.MousePos.y);
+		ImGui::Text("Mouse Delta:"); ImGui::SameLine();
+		ImGui::TextColored(ImVec4(1.0f, 0.0f, 1.0f, 1.0f), "%g, %g", io.MouseDelta.x, io.MouseDelta.y);
+		ImGui::Text("Mouse Wheel:", io.MouseWheel);
+		ImGui::Text("Mouse Button:"); 
+
+		int count = IM_ARRAYSIZE(io.MouseDown);
+		for (int i = 0; i < count; i++) 
+		{
+			if (ImGui::IsMouseDown(i)) 
+			{ 
+				ImGui::SameLine(); 
+				ImGui::TextColored(ImVec4(1.0f, 0.0f, 1.0f, 1.0f), "b%d (%.02f secs)", i, io.MouseDownDuration[i]); 
+			}
+		}
+
+		struct funcs { static bool IsLegacyNativeDupe(ImGuiKey key) { return key < 512 && ImGui::GetIO().KeyMap[key] != -1; } }; // Hide Native<>ImGuiKey duplicates when both exists in the array
+		ImGuiKey start_key = (ImGuiKey)0;
+
+		ImGui::Text("Keys down:");
+		for (ImGuiKey key = start_key; key < ImGuiKey_NamedKey_END; key = (ImGuiKey)(key + 1)) 
+		{ 
+			if (funcs::IsLegacyNativeDupe(key) || !ImGui::IsKeyDown(key)) continue; ImGui::SameLine(); 
+			ImGui::Text((key < ImGuiKey_NamedKey_BEGIN) ? "\"%s\"" : "\"%s\" %d", ImGui::GetKeyName(key), key); 
+		}
 	}
 	if(ImGui::CollapsingHeader("Hardware"))
 	{

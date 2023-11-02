@@ -38,14 +38,15 @@ ModuleRenderer3D::~ModuleRenderer3D()
 // Called before render is available
 static const GLfloat CubeVertices[] = {
 	-1, -1, -1,
-	1, -1, -1,
-	1, 1, -1,
-	-1, 1, -1,
-	-1, -1, 1,
-	1, -1, 1,
-	1, 1, 1,
-	-1, 1, 1
+	 1, -1, -1,
+	 1,  1, -1,
+	-1,  1, -1,
+	-1, -1,  1,
+	 1, -1,  1,
+	 1,  1,  1,
+	-1,  1,  1
 };
+
 static const GLuint CubeIndices[] = {
 	0, 1, 3, 3, 1, 2,
 	1, 5, 2, 2, 5, 6,
