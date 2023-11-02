@@ -19,9 +19,9 @@ public:
 		this->Parent = owner;
 	}
 
-	virtual ~Component();
+	~Component() {}
 
-	virtual void Inspector();
+	//void Inspector();
 
 	componentType type;
 	bool active;

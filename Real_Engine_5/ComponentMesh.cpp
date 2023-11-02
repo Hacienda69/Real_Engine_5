@@ -106,3 +106,68 @@ bool ComponentMesh::CleanUp()
 	aiDetachAllLogStreams();
 	return true;
 }
+
+GameObject* ProcessNode(const aiScene* scene, aiNode* node, GameObject* parent, string Path)
+{
+	if (node->mNumMeshes == 0 && node->mNumChildren == 0) return nullptr;
+
+	GameObject* gObj = new GameObject(parent);
+
+	gObj->name = node->mName.C_Str();
+
+
+	aiMatrix4x4 TransformMat = node->mTransformation;
+
+	aiVector3D scale, position, rotation;
+	aiQuaternion QuatRotation;
+
+	TransformMat.Decompose(scale, QuatRotation, position);
+	rotation = QuatRotation.GetEuler();
+
+	gObj->transform->scale = float3(scale.x, scale.y, scale.z);
+	gObj->transform->position = float3(position.x, position.y, position.z);
+	gObj->transform->rotation = float3(rotation.x * RADTODEG, rotation.y * RADTODEG, rotation.z * RADTODEG);
+	gObj->transform->SetTransformMatrix();
+
+	if (node->mNumMeshes != 0) {
+
+		CMesh* component = new CMesh(gObj);
+
+
+		string texture_path = "";
+
+
+		for (int i = 0; i < node->mNumMeshes; i++)
+		{
+			Mesh* mesh = ImportMesh(scene->mMeshes[node->mMeshes[i]]);
+
+			if (mesh == nullptr) {
+				LOG("Error loading scene %s", Path);
+				continue;
+			}
+
+			mesh->Owner = gObj;
+			component->meshes.push_back(mesh);
+
+			if (texture_path == "") texture_path = ImportTexture(scene, node->mMeshes[i], Path);
+
+		}
+
+		gObj->components.push_back(component);
+		gObj->fixed = true;
+
+
+
+		if (texture_path != "") {
+			CTexture* componentT = new CTexture(gObj);
+			gObj->components.push_back(componentT);
+			componentT->LinkTexture(texture_path);
+		}
+	}
+
+	for (int i = 0; i < node->mNumChildren; i++) {
+		ProcessNode(scene, node->mChildren[i], gObj, Path);
+	}
+
+	return gObj;
+}

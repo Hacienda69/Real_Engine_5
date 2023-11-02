@@ -40,16 +40,12 @@ public:
 	vector<Mesh*> meshes;
 	string pathFile = "";
 
-	bool Inint();
+	bool Init();
 
-	update_status PreUpdate(float dt);
-	update_status Update(float dt);
-	update_status PostUpdate(float dt);
 	GameObject* LoadFile(string Path);
 	bool CleanUp();
 
 	void BufferMesh(Mesh* mesh);
-	void DrawMesh();
 
 private:
 	Mesh* ImportMesh(aiMesh* aiMesh);

@@ -228,7 +228,7 @@ update_status ModuleRenderer3D::PostUpdate(float dt)
 	////glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, EBO);
 	glDrawElements(GL_TRIANGLES, 36, GL_UNSIGNED_INT, NULL);
 
-	App->mesh->DrawMesh();
+	//App->mesh->DrawMesh();
 
 	App->editor->DrawEditor();
 
