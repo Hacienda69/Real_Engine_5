@@ -19,7 +19,7 @@ ComponentMesh::~ComponentMesh()
 }
 
 // ---------------------------------------------------------------------------
-bool ComponentMesh::Start()
+bool ComponentMesh::Init()
 {
 	bool ret = true;
 
@@ -98,6 +98,13 @@ void Mesh::DrawMesh()
 
 	glPushMatrix();
 
+<<<<<<< Updated upstream
+=======
+	if (Parent != nullptr) {
+		//glMultMatrixf(Parent->transform->GetTransformMatrix().ptr());
+	}
+
+>>>>>>> Stashed changes
 	glDrawElements(GL_TRIANGLES, numIndex, GL_UNSIGNED_INT, NULL);
 
 	glPopMatrix();

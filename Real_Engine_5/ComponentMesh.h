@@ -1,5 +1,5 @@
-#ifndef ComponentMesh_HEADER
-#define ComponentMesh_HEADER
+#ifndef COMPONENT_H
+#define COMPONENT_H
 
 #include "Assimp/include/cimport.h"
 #include "Assimp/include/scene.h"
@@ -40,16 +40,16 @@ public:
 	vector<Mesh*> meshes;
 	string pathFile = "";
 
-	bool Start();
+	bool Inint();
 
 	update_status PreUpdate(float dt);
 	update_status Update(float dt);
 	update_status PostUpdate(float dt);
 	GameObject* LoadFile(string Path);
+	bool CleanUp();
+
 	void BufferMesh(Mesh* mesh);
 	void DrawMesh();
-
-	bool CleanUp();
 
 private:
 	Mesh* ImportMesh(aiMesh* aiMesh);
@@ -57,4 +57,4 @@ private:
 	GameObject* ProcessNode(const aiScene* scene, aiNode* node, GameObject* parent, string Path);
 };
 
-#endif // ComponentMesh
+#endif // COMPONENT_MESH

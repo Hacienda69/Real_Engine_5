@@ -18,7 +18,7 @@ public:
 	ComponentTexture(Application* app, bool start_enabled = true);
 	~ComponentTexture();
 
-	bool Start();
+	bool Init();
 
 	bool CleanUp();
 

@@ -11,7 +11,7 @@ ComponentTexture::~ComponentTexture()
 {
 }
 
-bool ComponentTexture::Start()
+bool ComponentTexture::Init()
 {
 	for (int i = 0; i < CHECKERS_HEIGHT; i++) {
 		for (int j = 0; j < CHECKERS_WIDTH; j++) {
