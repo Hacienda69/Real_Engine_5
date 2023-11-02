@@ -32,6 +32,13 @@ bool ModuleEditor::Init()
 	fps_Log.reserve(30);
 	ms_Log.reserve(30);
 
+	RAM = SDL_GetSystemRAM();
+	CPU = SDL_GetCPUCount();
+	CACHE = SDL_GetCPUCacheLineSize();
+
+	PLATFORM = SDL_GetPlatform();
+	NUM_MONITORS = SDL_GetNumVideoDisplays();
+
 	return true;
 }
 
@@ -224,6 +231,8 @@ void ModuleEditor::DrawConfiguration()
 		static char s2[128] = "CITM UPC";
 		ImGui::InputText("Organization", s2, IM_ARRAYSIZE(s2));
 
+		ImGui::Separator();
+
 		int auxFPS = App->targetFPS;
 		if (ImGui::SliderInt("Max FPS", &auxFPS, 1, 120))
 			App->targetFPS = auxFPS;
@@ -238,7 +247,10 @@ void ModuleEditor::DrawConfiguration()
 		sprintf_s(title, 25, "Milliseconds %0.1f", ms_Log[ms_Log.size() - 1]);
 		ImGui::PlotHistogram("##FPS Log", &ms_Log[0], ms_Log.size(), 0, title, 0.0f, 50.0f, ImVec2(300, 100));
 		
-		ImGui::Text("Application average %.3f ms/frame (%.1f FPS)", 1000.0 / ImGui::GetIO().Framerate, ImGui::GetIO().Framerate);
+		ImGui::Separator();
+
+		ImGui::Text("Average MS: %.3f", 1000.0 / ImGui::GetIO().Framerate);
+		ImGui::Text("Average FPS: %.1f", ImGui::GetIO().Framerate);
 
 	}
 	if(ImGui::CollapsingHeader("Window"))
@@ -264,6 +276,8 @@ void ModuleEditor::DrawConfiguration()
 			App->window->ScreenHeight = new_Height;
 			App->window->SetWindowSize();
 		}
+
+		ImGui::Separator();
 
 		if (ImGui::BeginTable("split", 2)) {
 			ImGui::TableNextColumn(); if (ImGui::Checkbox("Fullscreen",   &App->window->win_FullScreen))  { LOG("Fullscreen Toggled");   App->window->ToggleFullscreen();  }
@@ -295,7 +309,18 @@ void ModuleEditor::DrawConfiguration()
 	}
 	if(ImGui::CollapsingHeader("Hardware"))
 	{
+		ImGui::Text("Platform: "); ImGui::SameLine(); ImGui::TextColored(ImVec4(0.0f, 1.0f, 1.0f, 1.0f), PLATFORM.c_str());
 
+		ImGui::Separator();
+
+		ImGui::Text("RAM: ");   ImGui::SameLine(); ImGui::TextColored(ImVec4(0.0f, 1.0f, 1.0f, 1.0f), "%d", RAM);
+		ImGui::Text("CPU: ");   ImGui::SameLine(); ImGui::TextColored(ImVec4(0.0f, 1.0f, 1.0f, 1.0f), "%d", CPU);
+		ImGui::Text("GPU: ");   ImGui::SameLine(); ImGui::TextColored(ImVec4(0.0f, 1.0f, 1.0f, 1.0f), "%s", glGetString(GL_VENDOR));
+		ImGui::Text("Cache: "); ImGui::SameLine(); ImGui::TextColored(ImVec4(0.0f, 1.0f, 1.0f, 1.0f), "%d", CACHE);
+
+		ImGui::Separator();
+
+		ImGui::Text("Display number: "); ImGui::SameLine(); ImGui::TextColored(ImVec4(0.0f, 1.0f, 1.0f, 1.0f), "%d", NUM_MONITORS);
 	}
 
 	ImGui::End();

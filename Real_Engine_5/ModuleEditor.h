@@ -40,6 +40,9 @@ private:
 	bool showConfig =	 true;
 	bool showConsole =	 true;
 	bool showHierarchy = false;
+
+	int RAM, CPU, CACHE, NUM_MONITORS;
+	std::string PLATFORM;
 };
 
 #endif //MODULE_EDITOR
