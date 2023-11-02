@@ -27,9 +27,7 @@ bool ComponentMesh::Start()
 	stream = aiGetPredefinedLogStream(aiDefaultLogStream_DEBUGGER, nullptr);
 	aiAttachLogStream(&stream); //stream Assimp!!
 
-	pathFile = "Assets/BakerHouse.fbx"; //hardcoded (por ahora)
-
-	LoadFile(pathFile);
+	//ya no está hardcodeado oleeee
 
 	return ret;
 }
