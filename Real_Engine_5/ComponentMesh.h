@@ -1,5 +1,5 @@
-#ifndef COMPONENT_H
-#define COMPONENT_H
+#ifndef COMPONENT_MESH_H
+#define COMPONENT_MESH_H
 
 #include "Assimp/include/cimport.h"
 #include "Assimp/include/scene.h"

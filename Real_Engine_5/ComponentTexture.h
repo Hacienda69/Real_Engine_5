@@ -1,16 +1,20 @@
-#pragma once
-#include "Module.h"
-#include "Globals.h"
-#include "glmath.h"
-#include "ModuleRenderer3D.h"
+#ifndef COMPONENT_TEXTURE_H
+#define COMPONENT_TEXTURE_H
+
 #include "DevIL/include/il.h"
 #include "DevIL/include/ilu.h"
 #include "backends/imgui_impl_opengl3.h"
 
+#include "Module.h"
+#include "Globals.h"
+#include "glmath.h"
+#include "ModuleRenderer3D.h"
+
 using namespace std;
 
-#define CHECKERS_HEIGHT 64
-#define CHECKERS_WIDTH 64
+
+#define NULLTEX_HEIGHT 64
+#define NULLTEX_WIDTH 64
 
 class ComponentTexture : public Module
 {
@@ -20,16 +24,15 @@ public:
 
 	bool Init();
 
-	bool CleanUp();
-
-	GLuint GenTexture(GLuint* imgData, GLuint width, GLuint height);
-
+	GLuint GLTexture(GLuint* imgData, GLuint width, GLuint height);
 	GLuint LoadTexture(string path);
+	void DeleteTexture(GLuint ID);
+	GLubyte null_texture[NULLTEX_HEIGHT][NULLTEX_WIDTH][4];
 
-	void FreeTexture(GLuint ID);
-
-	GLubyte checkerImage[CHECKERS_HEIGHT][CHECKERS_WIDTH][4];
+	bool CleanUp();
 	
 	GLuint textureID = 0;
 	string texPath;
 };
+
+#endif // COMPONENT_TEXTURE

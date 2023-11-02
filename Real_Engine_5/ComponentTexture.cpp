@@ -13,13 +13,13 @@ ComponentTexture::~ComponentTexture()
 
 bool ComponentTexture::Init()
 {
-	for (int i = 0; i < CHECKERS_HEIGHT; i++) {
-		for (int j = 0; j < CHECKERS_WIDTH; j++) {
+	for (int i = 0; i < NULLTEX_HEIGHT; i++) {
+		for (int j = 0; j < NULLTEX_WIDTH; j++) {
 			int c = ((((i & 0x8) == 0) ^ (((j & 0x8)) == 0))) * 255;
-			checkerImage[i][j][0] = (GLubyte)c;
-			checkerImage[i][j][1] = (GLubyte)c;
-			checkerImage[i][j][2] = (GLubyte)c;
-			checkerImage[i][j][3] = (GLubyte)255;
+			null_texture[i][j][0] = (GLubyte)c;
+			null_texture[i][j][1] = (GLubyte)c;
+			null_texture[i][j][2] = (GLubyte)c;
+			null_texture[i][j][3] = (GLubyte)255;
 		}
 	}
 
@@ -35,8 +35,8 @@ bool ComponentTexture::Init()
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
 
-	glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, CHECKERS_WIDTH, CHECKERS_HEIGHT,
-		0, GL_RGBA, GL_UNSIGNED_BYTE, checkerImage);
+	glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, NULLTEX_WIDTH, NULLTEX_HEIGHT,
+		0, GL_RGBA, GL_UNSIGNED_BYTE, null_texture);
 
 	glGenerateMipmap(GL_TEXTURE_2D);
 
@@ -55,7 +55,7 @@ bool ComponentTexture::Init()
 	return true;
 }
 
-GLuint ComponentTexture::GenTexture(GLuint* imgData, GLuint width, GLuint height)
+GLuint ComponentTexture::GLTexture(GLuint* imgData, GLuint width, GLuint height)
 {
 	GLuint TextID = 0;
 
@@ -103,19 +103,19 @@ GLuint ComponentTexture::LoadTexture(string path)
 		success = ilConvertImage(IL_RGBA, IL_UNSIGNED_BYTE);
 		if (success == IL_TRUE)
 		{
-			TextID = GenTexture((GLuint*)ilGetData(), (GLuint)ilGetInteger(IL_IMAGE_WIDTH), (GLuint)ilGetInteger(IL_IMAGE_HEIGHT));
+			TextID = GLTexture((GLuint*)ilGetData(), (GLuint)ilGetInteger(IL_IMAGE_WIDTH), (GLuint)ilGetInteger(IL_IMAGE_HEIGHT));
 		}
 		ilDeleteImages(1, &imgID);
 
 		if (TextID == 0)
 		{
-			printf("Unable to load %s\n", path.c_str());
+			printf("CANNOT LOAD %s\n", path.c_str());
 		}
 	}
 	return TextID;
 }
 
-void ComponentTexture::FreeTexture(GLuint ID)
+void ComponentTexture::DeleteTexture(GLuint ID)
 {
 	if (ID != 0)
 	{
