@@ -1,4 +1,18 @@
 #include "Application.h"
+#include "ModuleEditor.h"
+#include<string>
+#include "Globals.h"
+
+extern Application* externalapp = nullptr;
+
+Application* Application::GetApp()
+{
+	if (externalapp == nullptr)
+	{
+		externalapp = new Application();
+	}
+	return externalapp;
+}
 
 Application::Application()
 {

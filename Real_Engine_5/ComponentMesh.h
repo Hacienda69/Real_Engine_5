@@ -9,6 +9,7 @@
 #include "Globals.h"
 #include "glmath.h"
 #include "ModuleRenderer3D.h"
+#include "MathGeoLib/include/MathGeoLib.h"
 
 #include <vector>
 using namespace std;
@@ -28,6 +29,8 @@ struct Mesh {
 	float* vertex = nullptr;
 	GLuint id_texture = 0;
 	GameObject* Parent;
+	AABB localAABB;
+	void InnitAABB();
 	void DrawMesh();
 };
 

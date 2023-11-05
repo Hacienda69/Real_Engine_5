@@ -48,10 +48,6 @@ bool ComponentTexture::Init()
 	ilInit();
 	ilClearColour(255, 255, 255, 000);
 
-	texPath = "Assets/Baker_house.png";
-
-	LoadTexture(texPath);
-
 	return true;
 }
 

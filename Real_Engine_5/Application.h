@@ -54,6 +54,8 @@ public:
 	Application();
 	~Application();
 
+	static Application* GetApp();
+
 	bool Init();
 	update_status Update();
 	bool CleanUp();
@@ -66,3 +68,5 @@ private:
 	void PrepareUpdate();
 	void FinishUpdate();
 };
+
+extern Application* externalapp;

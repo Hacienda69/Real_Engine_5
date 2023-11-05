@@ -719,6 +719,13 @@
     <ClInclude Include="Component.h">
       <Filter>Sources\Components</Filter>
     </ClInclude>
+    <ClInclude Include="ModuleHierarchy.h" />
+    <ClInclude Include="Geometry.h">
+      <Filter>Sources\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="Texture.h">
+      <Filter>Sources\Components</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="ModuleCamera3D.cpp">
@@ -892,6 +899,13 @@
     </ClCompile>
     <ClCompile Include="ComponentTexture.cpp" />
     <ClCompile Include="GameObject.cpp">
+      <Filter>Sources\Components</Filter>
+    </ClCompile>
+    <ClCompile Include="ModuleHierarchy.cpp" />
+    <ClCompile Include="Geometry.cpp">
+      <Filter>Sources\Components</Filter>
+    </ClCompile>
+    <ClCompile Include="Texture.cpp">
       <Filter>Sources\Components</Filter>
     </ClCompile>
   </ItemGroup>
