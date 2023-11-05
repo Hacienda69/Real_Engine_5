@@ -208,10 +208,6 @@ GameObject* ComponentMesh::ProcessNode(const aiScene* scene, aiNode* node, GameO
 
 	gObj->name = node->mName.C_Str();
 
-<<<<<<< Updated upstream
-
-=======
->>>>>>> Stashed changes
 	if (node->mNumMeshes != 0) {
 
 		_Geometry* component = new _Geometry(gObj);
@@ -236,11 +232,6 @@ GameObject* ComponentMesh::ProcessNode(const aiScene* scene, aiNode* node, GameO
 
 		gObj->components.push_back(component);
 		gObj->status = true;
-<<<<<<< Updated upstream
-
-
-=======
->>>>>>> Stashed changes
 
 		if (texture_path != "") {
 			Textureclass* componentT = new Textureclass(gObj);
