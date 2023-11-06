@@ -112,15 +112,15 @@ _Geometry* GameObject::GetComponentMesh()
 	return nullptr;
 }
 
-GameObject* GameObject::GetCompMesh()
-{
-	for (int i = 0; i < components.size(); i++) {
-
-		if (components[i]->type == componentType::GEOMETRY)
-		{
-			return (GameObject*)components[i];
-		}
-	}
-
-	return nullptr;
-}
+//GameObject* GameObject::GetCompMesh()
+//{
+//	for (int i = 0; i < components.size(); i++) {
+//
+//		if (components[i]->type == componentType::GEOMETRY)
+//		{
+//			return (GameObject*)components[i];
+//		}
+//	}
+//
+//	return nullptr;
+//}

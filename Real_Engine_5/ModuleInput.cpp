@@ -118,7 +118,7 @@ update_status ModuleInput::PreUpdate(float dt)
 
 			case SDL_DROPFILE:
 			{
-					CheckFileExtension(e.drop.file);
+				ImportFile(e.drop.file);
 			}
 		}
 	}
@@ -129,23 +129,6 @@ update_status ModuleInput::PreUpdate(float dt)
 	return UPDATE_CONTINUE;
 }
 
-void ModuleInput::CheckFileExtension(std::string fileName)
-{
-	std::string extension = fileName.substr(fileName.find_last_of(".") + 1);
-	if (extension == "fbx")
-	{
-		App->mesh->LoadFile(fileName);
-	}
-	if (extension == "png" || extension == "dds")
-	{
-		App->tex->LoadTexture(fileName);
-	}
-	else
-	{
-		LOG("Error: this file extension not supported")
-	}
-}
-
 bool ModuleInput::CleanUp()
 {
 	LOG("Quitting SDL input event subsystem");
@@ -154,7 +137,7 @@ bool ModuleInput::CleanUp()
 }
 
 // Other Functions ----------------------------------------------
-void ModuleInput::InportFile(std::string path)
+void ModuleInput::ImportFile(std::string path)
 {
 	std::string type = path.substr(path.find_last_of(".") + 1);
 	if (type == "fbx" || type == "FBX")
@@ -162,10 +145,10 @@ void ModuleInput::InportFile(std::string path)
 		LOG("Loading FBX");
 		App->mesh->LoadFile(path);
 	}
-	else if (type == "png" || type == "PNG")
+	else if (type == "png" || type == "PNG" || type == "dds" || type == "DDS")
 	{
 		LOG("Loading Textures");
+		App->tex->LoadTexture(path);
 	}
 	else LOG("File didn't match filter");
-
 }

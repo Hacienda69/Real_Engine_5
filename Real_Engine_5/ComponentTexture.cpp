@@ -38,7 +38,7 @@ bool ComponentTexture::Init()
 	glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, NULLTEX_WIDTH, NULLTEX_HEIGHT,
 		0, GL_RGBA, GL_UNSIGNED_BYTE, null_texture);
 
-	glGenerateMipmap(GL_TEXTURE_2D);
+	//glGenerateMipmap(GL_TEXTURE_2D);
 
 	glBindTexture(GL_TEXTURE_2D, 0);
 	glDisable(GL_TEXTURE_2D);

@@ -59,11 +59,9 @@ public:
 		return mouse_y_motion;
 	}
 
-	void CheckFileExtension(std::string fileName);
-
 private:
 
-	void InportFile(std::string path);
+	void ImportFile(std::string path);
 
 private:
 	KEY_STATE* keyboard;
